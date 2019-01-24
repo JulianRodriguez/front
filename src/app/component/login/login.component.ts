@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {LoginService} from '../../service/login.service';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/user.model';
+import {equal} from 'assert';
 
 
 @Component({
@@ -24,14 +25,23 @@ export class LoginComponent implements OnInit {
     this.loginService.login(username, password).subscribe(
 
       res => {
-        const u: User = {username: username};
+        const u: User = {username: username, rolename: res.rolename};
+        // const u: User = {username: username, rolename: res.rolename};
+        const role = u.rolename;
         this.userService.setUserLoggedIn(u);
+        if (role === 'ADMIN') {
+          console.log(1);
+          this.router.navigate(['/admin']);
+        } else if (role === 'RESTAURANT') {
+                console.log(2);
+                this.router.navigate(['/admin']);
+              }
       },
       error => {
         console.error(error);
 
       },
-      () => this.navigate()
+      // () => this.navigate()
     );
 
   }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {User} from '../model/user.model';
 
 
 
@@ -9,9 +10,26 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<Object> {
+  // login(username: string, password: string): Observable<User> {
+  //
+  //   const base64Credential: string = btoa(username + ':' + password);
+  //
+  //   const headers = new HttpHeaders({
+  //     'Authorization': 'Basic ' + base64Credential,
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*'
+  //   });
+  //   const options = { headers: headers,
+  //     withCredentials: true};
+  //
+  //   return this.http.post<User>('http://localhost:8080/login', {
+  //     email: username,
+  //     password: password,
+  //   }, options);
 
-    const base64Credential: string = btoa(username + ':' + password);
+    login(username: string, password: string): Observable<User> {
+
+      const base64Credential: string = btoa(username + ':' + password);
 
     const headers = new HttpHeaders({
       'Authorization': 'Basic ' + base64Credential,
@@ -21,7 +39,7 @@ export class LoginService {
     const options = { headers: headers,
       withCredentials: true};
 
-    return this.http.post('http://localhost:8080/login', {
+    return this.http.post<User>('http://localhost:8080/login', {
       email: username,
       password: password,
     }, options);

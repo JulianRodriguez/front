@@ -16,7 +16,6 @@ export class UserService {
     this.isUserLoggedIn = true;
     this.usserLogged = user;
     localStorage.setItem('currentUser', JSON.stringify(user));
-
   }
 
   getUserLoggedIn() {
