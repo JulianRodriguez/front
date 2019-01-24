@@ -11,13 +11,15 @@ import { MainNavComponent } from './component/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { AdminComponent } from './component/admin/admin.component';
+import { RestaurantComponent } from './component/restaurant/restaurant.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainNavComponent,
-    AdminComponent
+    AdminComponent,
+    RestaurantComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { AdminComponent } from './component/admin/admin.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     LoginService,

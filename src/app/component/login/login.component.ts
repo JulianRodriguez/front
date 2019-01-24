@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import {LoginService} from '../../service/login.service';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/user.model';
-import {equal} from 'assert';
 
 
 @Component({
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin']);
         } else if (role === 'RESTAURANT') {
                 console.log(2);
-                this.router.navigate(['/admin']);
+                this.router.navigate(['/restaurant']);
               }
       },
       error => {

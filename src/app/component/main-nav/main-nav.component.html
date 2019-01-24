@@ -1,30 +1,91 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <!--<button (click)="toggleMenu()" class="hamburger">-->
-        <!--<span>Button Text</span>-->
+<!--<mat-sidenav-container class="sidenav-container">-->
+  <!--<mat-sidenav #drawer class="sidenav" fixedInViewport="true"-->
+      <!--[attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"-->
+      <!--[mode]="(isHandset$ | async) ? 'over' : 'side'"-->
+      <!--[opened]="!(isHandset$ | async)">-->
+    <!--<mat-toolbar>Menu</mat-toolbar>-->
+    <!--<mat-nav-list>-->
+      <!--<a mat-list-item href="#">Link 1</a>-->
+      <!--<a mat-list-item href="#">Link 2</a>-->
+      <!--<a mat-list-item href="#">Link 3</a>-->
+    <!--</mat-nav-list>-->
+  <!--</mat-sidenav>-->
+  <!--<mat-sidenav-content>-->
+    <!--<mat-toolbar color="primary">-->
+      <!--<button-->
+        <!--type="button"-->
+        <!--aria-label="Toggle sidenav"-->
+        <!--mat-icon-button-->
+        <!--(click)="drawer.toggle()"-->
+        <!--*ngIf="isHandset$ | async">-->
+        <!--<mat-icon aria-label="Side nav toggle icon">menu</mat-icon>-->
       <!--</button>-->
-      <span>untitled</span>
-    </mat-toolbar>
-    <!-- Add Content Here -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+      <!--&lt;!&ndash;<button (click)="toggleMenu()" class="hamburger">&ndash;&gt;-->
+        <!--&lt;!&ndash;<span>Button Text</span>&ndash;&gt;-->
+      <!--&lt;!&ndash;</button>&ndash;&gt;-->
+      <!--<span>untitled</span>-->
+    <!--</mat-toolbar>-->
+    <!--&lt;!&ndash; Add Content Here &ndash;&gt;-->
+  <!--</mat-sidenav-content>-->
+<!--</mat-sidenav-container>-->
+
+
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">WebApp</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="nav-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="nav-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav pull-right">
+          <li class="divider-vertical"></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.nav-collapse -->
+    </div>
+  </div><!-- /navbar-inner -->
+</div>
