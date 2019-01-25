@@ -7,7 +7,3 @@ export class User {
   phone: string;
   idRole: number;
 }
-
-// export  class {
-//
-// }
