@@ -12,6 +12,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { AdminComponent } from './component/admin/admin.component';
 import { RestaurantComponent } from './component/restaurant/restaurant.component';
+import { UserComponent } from './component/user/user.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RestaurantComponent } from './component/restaurant/restaurant.component
     LoginComponent,
     MainNavComponent,
     AdminComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
