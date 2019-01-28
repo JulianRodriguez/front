@@ -7,9 +7,8 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   // { path: 'restaurant', component: RestaurantComponent, canActivate: [AuthGuard]},
-  { path: 'admin', component: AdminComponent},
+  { path: 'user', component: AdminComponent},
   { path: 'restaurant', component: RestaurantComponent},
-
   { path: '**', redirectTo: 'notfound' }
 ];
 

@@ -11,8 +11,8 @@ import { MainNavComponent } from './component/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { AdminComponent } from './component/admin/admin.component';
-import { RestaurantComponent } from './component/restaurant/restaurant.component';
 import { UserComponent } from './component/user/user.component';
+import { RestaurantComponent } from './component/restaurant/restaurant.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { UserComponent } from './component/user/user.component';
     LoginComponent,
     MainNavComponent,
     AdminComponent,
+    UserComponent,
     RestaurantComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +37,7 @@ import { UserComponent } from './component/user/user.component';
   ],
   providers: [
     LoginService,
-    UserService
+    UserService,
   ],
   bootstrap: [AppComponent]
 })
