@@ -13,6 +13,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { AdminComponent } from './component/admin/admin.component';
 import { UserComponent } from './component/user/user.component';
 import { RestaurantComponent } from './component/restaurant/restaurant.component';
+import {RestaurantelistComponent} from './component/restaurantelist/restaurantelist.component';
+import {RestaurantService} from './service/restaurant.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { RestaurantComponent } from './component/restaurant/restaurant.component
     AdminComponent,
     UserComponent,
     RestaurantComponent,
+    RestaurantelistComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { RestaurantComponent } from './component/restaurant/restaurant.component
   providers: [
     LoginService,
     UserService,
+    RestaurantService,
   ],
   bootstrap: [AppComponent]
 })

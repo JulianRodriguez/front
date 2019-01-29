@@ -34,7 +34,7 @@ export class UserService {
   }
 
   getAll() {
-    return this.http.get<User>(this.url, this.options);
+    return this.http.get<User[]>(this.url, this.options);
   }
 
 }

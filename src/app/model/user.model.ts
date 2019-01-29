@@ -1,7 +1,7 @@
 export class User {
   username: string;
   rolename: string;
-  // idUser: number;
+  idUser: number;
   // name: string;
   // email: string;
   // phone: string;
