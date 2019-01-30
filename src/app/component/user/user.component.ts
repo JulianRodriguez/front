@@ -10,6 +10,7 @@ import {UserService} from '../../service/user.service';
 export class UserComponent implements OnInit {
 
   users: Array<User>;
+  userSelected: User;
 
   constructor(private userService: UserService) { }
 
@@ -19,4 +20,17 @@ export class UserComponent implements OnInit {
       console.log(users);
     });
   }
+  // adduser(username: string, password: string, role: number, name: string, phone: string, email: string ) {
+  //   event.preventDefault();
+  //   alert(event);
+  //   this.userService.adduser(username, password, role, name, phone, email).subscribe(user => {
+  //     console.log(user);
+  //   });
+  //   console.log('hola');
+  // }
+
+  changeUserSelected(userSelected: User) {
+    this.userSelected = userSelected;
+  }
 }
+

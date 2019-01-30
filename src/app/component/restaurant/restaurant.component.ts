@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Restaurant} from '../../model/restaurant.model';
+import {RestaurantService} from '../../service/restaurant.service';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantComponent implements OnInit {
 
-  constructor() { }
+  restaurants: Array<Restaurant>;
+  constructor(private restaurantService: RestaurantService,
+              private userService: UserService) { }
 
   ngOnInit() {
+    const user = this.userService.getUserLoggedIn();
+
+    if (user.rolename === 'ADMIN') {
+      this.restaurantService.getAll().subscribe(restaurants => {
+        this.restaurants = restaurants as unknown as Array<Restaurant>;
+        console.log(restaurants);
+      });
+    } else {
+      console.log(user);
+      this.restaurantService.getByIdUser(user.idUser).subscribe(restaurants => {
+        this.restaurants = restaurants as unknown as Array<Restaurant>;
+        console.log(restaurants);
+      });
+    }
   }
 
 }

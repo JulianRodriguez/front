@@ -15,6 +15,10 @@ import { UserComponent } from './component/user/user.component';
 import { RestaurantComponent } from './component/restaurant/restaurant.component';
 import {RestaurantelistComponent} from './component/restaurantelist/restaurantelist.component';
 import {RestaurantService} from './service/restaurant.service';
+import { DeleteComponent } from './component/delete/delete.component';
+import { EditComponent } from './component/edit/edit.component';
+import { CreateuserComponent } from './component/createuser/createuser.component';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +29,9 @@ import {RestaurantService} from './service/restaurant.service';
     UserComponent,
     RestaurantComponent,
     RestaurantelistComponent,
+    DeleteComponent,
+    EditComponent,
+    CreateuserComponent,
   ],
   imports: [
     BrowserModule,
