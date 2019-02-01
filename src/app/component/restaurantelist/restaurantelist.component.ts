@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Restaurant} from '../../model/restaurant.model';
 import {RestaurantService} from '../../service/restaurant.service';
 import {UserService} from '../../service/user.service';
+import {User} from '../../model/user.model';
 
 @Component({
   selector: 'app-restaurantelist',
@@ -10,6 +11,9 @@ import {UserService} from '../../service/user.service';
 })
 
 export class RestaurantelistComponent implements OnInit {
+
+  @Input()
+  RestaurantToDelete: Restaurant;
 
   restaurants: Array<Restaurant>;
   constructor(private restaurantService: RestaurantService,
@@ -31,5 +35,7 @@ export class RestaurantelistComponent implements OnInit {
       });
     }
   }
+
+
 
 }

@@ -25,4 +25,12 @@ export class DeleteComponent implements OnInit {
 
   }
 
+  // onDeleteRestaurant() {
+  //   console.log(this.userToDelete);
+  //   this.userService.deleteuser(this.userToDelete).subscribe( entrada => {
+  //     console.log("Eliminado: " + entrada);
+  //   });
+  //
+  // }
+
 }

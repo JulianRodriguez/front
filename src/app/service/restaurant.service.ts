@@ -44,5 +44,17 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(urlFull, this.options);
   }
 
+  deleterestaurant(restaurant: Restaurant) {
+    console.log('en el delete');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+
+    this.options = { headers: headers, body: restaurant,
+      withCredentials: true};
+
+    return this.http.delete<Restaurant>('http://localhost:8080/restaurant/' + restaurant.idRestaurant, this.options);
+  }
 
 }

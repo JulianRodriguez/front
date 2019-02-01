@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {User} from '../model/user.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Connected} from '../model/connected.model';
 
 
 @Injectable()
@@ -9,7 +10,7 @@ export class UserService {
 
   private url = 'http://localhost:8080/user';
   private isUserLoggedIn;
-  public usserLogged: User;
+  public usserLogged: Connected;
   private options;
 
   constructor(private http: HttpClient) {
@@ -23,10 +24,10 @@ export class UserService {
       withCredentials: true};
   }
 
-  setUserLoggedIn(user: User) {
+  setUserLoggedIn(connected: Connected) {
     this.isUserLoggedIn = true;
-    this.usserLogged = user;
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.usserLogged = connected;
+    localStorage.setItem('currentUser', JSON.stringify(connected));
   }
 
   getUserLoggedIn() {
@@ -57,6 +58,23 @@ export class UserService {
     }, this.options);
     console.log('adios');
   }
+  // edituser(password: string, name: string, email: string) {
+  //
+  //   console.log('editando');
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*'
+  //   });
+  //   this.options = { headers: headers,
+  //     withCredentials: true};
+  //
+  //   return this.http.put<User>('http://localhost:8080/user', {
+  //     password: password,
+  //     name: name,
+  //     email: email,
+  //   }, this.options);
+  //   console.log('adios');
+  // };
 
   deleteuser(user: User) {
     console.log('en el delete');

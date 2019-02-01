@@ -111,7 +111,7 @@
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>
-            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+            <a href="#editEmployeeModal" (click)="changeUserSelected(user)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 
             <a href="#deleteEmployeeModal" (click)="changeUserSelected(user)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             <app-delete [userToDelete]="userSelected"></app-delete>

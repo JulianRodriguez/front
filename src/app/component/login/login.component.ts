@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {LoginService} from '../../service/login.service';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/user.model';
+import {Connected} from '../../model/connected.model';
 
 
 @Component({
@@ -23,8 +24,11 @@ export class LoginComponent implements OnInit {
     // Calls service to login user to the api rest
     this.loginService.login(username, password).subscribe(
 
-      res => {
-        const u: User = {idUser: res.idUser, username: username, rolename: res.rolename};
+      (res: Connected) => {
+        // const u: User = {idUser: res.idUser, username: username, rolename: res.rolename};
+        // const u: User = {idUser: res.idUser, username: username, rolename: res.rolename};
+        const u: Connected = {username, rolename: res.rolename, password};
+
         // const u: User = {username: username, rolename: res.rolename};
         const role = u.rolename;
         this.userService.setUserLoggedIn(u);

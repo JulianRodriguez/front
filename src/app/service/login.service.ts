@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../model/user.model';
+import {Connected} from '../model/connected.model';
 
 
 
@@ -27,7 +28,7 @@ export class LoginService {
   //     password: password,
   //   }, options);
 
-    login(username: string, password: string): Observable<User> {
+    login(username: string, password: string): Observable<Connected> {
 
       const base64Credential: string = btoa(username + ':' + password);
 
@@ -39,7 +40,7 @@ export class LoginService {
     const options = { headers: headers,
       withCredentials: true};
 
-    return this.http.post<User>('http://localhost:8080/login', {
+    return this.http.post<Connected>('http://localhost:8080/login', {
       email: username,
       password: password,
     }, options);

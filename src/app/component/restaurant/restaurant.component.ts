@@ -11,6 +11,8 @@ import {UserService} from '../../service/user.service';
 export class RestaurantComponent implements OnInit {
 
   restaurants: Array<Restaurant>;
+  RestaurantSelected: Restaurant;
+
   constructor(private restaurantService: RestaurantService,
               private userService: UserService) { }
 
@@ -29,6 +31,9 @@ export class RestaurantComponent implements OnInit {
         console.log(restaurants);
       });
     }
+  }
+  changeRestaurantSelected(RestaurantSelected: Restaurant) {
+    this.RestaurantSelected = RestaurantSelected;
   }
 
 }

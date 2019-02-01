@@ -39,7 +39,7 @@
         <div class="modal-footer">
           <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
           <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
-          <input type="submit"  class="btn btn-success"   value="Add" (click)="adduser(username.value,password.value,role.value,name.value,phone.value,email.value)">
+          <input type="submit"  class="btn btn-success" value="Add" data-target="#AvanzaModal" (click)="adduser(username.value,password.value,role.value,name.value,phone.value,email.value)">
         </div>
       </form>
     </div>
