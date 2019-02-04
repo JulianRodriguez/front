@@ -18,6 +18,7 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit() {
     const user = this.userService.getUserLoggedIn();
+    console.log(user.idUser);
 
     if (user.rolename === 'ADMIN') {
       this.restaurantService.getAll().subscribe(restaurants => {
@@ -25,7 +26,8 @@ export class RestaurantComponent implements OnInit {
         console.log(restaurants);
       });
     } else {
-      console.log(user);
+      console.log('LA ID');
+      console.log(user.idUser);
       this.restaurantService.getByIdUser(user.idUser).subscribe(restaurants => {
         this.restaurants = restaurants as unknown as Array<Restaurant>;
         console.log(restaurants);

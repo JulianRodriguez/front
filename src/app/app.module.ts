@@ -19,6 +19,7 @@ import { DeleteComponent } from './component/delete/delete.component';
 import { EditComponent } from './component/edit/edit.component';
 import { CreateuserComponent } from './component/createuser/createuser.component';
 import { DeleteRComponent } from './component/delete-r/delete-r.component';
+import { CreaterestaurantComponent } from './component/createrestaurant/createrestaurant.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { DeleteRComponent } from './component/delete-r/delete-r.component';
     EditComponent,
     CreateuserComponent,
     DeleteRComponent,
+    CreaterestaurantComponent,
   ],
   imports: [
     BrowserModule,

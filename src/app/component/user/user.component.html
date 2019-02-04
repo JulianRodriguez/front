@@ -86,7 +86,7 @@
       <div class="table-title">
         <div class="row">
           <div class="col-sm-6">
-            <h2>Manage <b>Employees</b></h2>
+            <h2>Administración de <b>Usuarios</b></h2>
           </div>
           <div class="col-sm-6">
             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
@@ -105,16 +105,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let user of users">
-          <th scope="row">{{user.idUser}}</th>
+        <tr *ngFor="let user of users; index as i">
+          <th scope="row">{{i+1}}</th>
           <td>{{user.name}}</td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>
             <a href="#editEmployeeModal" (click)="changeUserSelected(user)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-
+            <a href="#addEmployeeModal" (click)="changeUserSelected(user)" class="create" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Crear Restaurante">restaurant</i></a>
             <a href="#deleteEmployeeModal" (click)="changeUserSelected(user)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             <app-delete [userToDelete]="userSelected"></app-delete>
+            <app-createrestaurant *ngIf="userSelected" [RestaurantTocreate]="userSelected"></app-createrestaurant>
             <!--<app-edit [userToEdit]="user"></app-edit>-->
           </td>
         </tr>

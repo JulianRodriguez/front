@@ -40,12 +40,13 @@ export class RestaurantService {
 
   getByIdUser(id: number) {
     alert(id);
+    console.log(id);
     const urlFull = this.urlBase + 'user/' + id + '/restaurant';
     return this.http.get<Restaurant[]>(urlFull, this.options);
   }
 
   deleterestaurant(restaurant: Restaurant) {
-    console.log('en el delete');
+    console.log(restaurant.idRestaurant);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
@@ -55,6 +56,23 @@ export class RestaurantService {
       withCredentials: true};
 
     return this.http.delete<Restaurant>('http://localhost:8080/restaurant/' + restaurant.idRestaurant, this.options);
+  }
+
+  addrestaurant(name: string, description: string, user: User) {
+
+    console.log(user.idUser);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
+
+    return this.http.post<Restaurant>('http://localhost:8080/user/' + user.idUser + '/restaurant', {
+      nameRestaurant: name,
+      descriptionRestaurant: description,
+    }, this.options);
+    console.log('adios');
   }
 
 }
