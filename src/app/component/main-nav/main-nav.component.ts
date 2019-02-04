@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import {LoginService} from '../../service/login.service';
+import {UserService} from '../../service/user.service';
 
 
 @Component({
@@ -34,6 +36,10 @@ export class MainNavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private userService: UserService) {}
+
+  getRole() {
+    return this.userService.getUserLoggedIn().rolename;
+  }
 
 }

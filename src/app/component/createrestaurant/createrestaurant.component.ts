@@ -22,13 +22,9 @@ export class CreaterestaurantComponent implements OnInit {
 
   addrestaurant(name: string, description: string) {
     event.preventDefault();
-    alert(event);
-    console.log(this.RestaurantTocreate);
     this.restaurantService.addrestaurant(name, description, this.RestaurantTocreate).subscribe(restaurant => {
-      console.log('LA ID ES');
-      console.log(this.RestaurantTocreate);
+
     });
-    console.log('adios');
   }
 
 }

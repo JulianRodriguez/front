@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Restaurant} from '../../model/restaurant.model';
 import {RestaurantService} from '../../service/restaurant.service';
 import {UserService} from '../../service/user.service';
+import {User} from '../../model/user.model';
 
 @Component({
   selector: 'app-restaurant',
@@ -18,24 +19,23 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit() {
     const user = this.userService.getUserLoggedIn();
-    console.log(user.idUser);
 
     if (user.rolename === 'ADMIN') {
       this.restaurantService.getAll().subscribe(restaurants => {
         this.restaurants = restaurants as unknown as Array<Restaurant>;
-        console.log(restaurants);
       });
     } else {
-      console.log('LA ID');
-      console.log(user.idUser);
       this.restaurantService.getByIdUser(user.idUser).subscribe(restaurants => {
         this.restaurants = restaurants as unknown as Array<Restaurant>;
-        console.log(restaurants);
       });
     }
   }
   changeRestaurantSelected(RestaurantSelected: Restaurant) {
     this.RestaurantSelected = RestaurantSelected;
+  }
+
+  getUser(id: number) {
+    return this.userService.getUser(id);
   }
 
 }

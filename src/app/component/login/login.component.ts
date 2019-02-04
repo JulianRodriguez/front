@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
 
   logIn(username: string, password: string, event: Event) {
     event.preventDefault(); // Avoid default action for the submit button of the login form
-    alert(event);
     // Calls service to login user to the api rest
     this.loginService.login(username, password).subscribe(
 
@@ -33,10 +32,8 @@ export class LoginComponent implements OnInit {
         const role = u.rolename;
         this.userService.setUserLoggedIn(u);
         if (role === 'ADMIN') {
-          console.log(1);
           this.router.navigate(['/user']);
         } else if (role === 'RESTAURANT') {
-                console.log(2);
                 this.router.navigate(['/restaurant']);
               }
       },

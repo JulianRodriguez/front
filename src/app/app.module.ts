@@ -13,13 +13,14 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { AdminComponent } from './component/admin/admin.component';
 import { UserComponent } from './component/user/user.component';
 import { RestaurantComponent } from './component/restaurant/restaurant.component';
-import {RestaurantelistComponent} from './component/restaurantelist/restaurantelist.component';
 import {RestaurantService} from './service/restaurant.service';
 import { DeleteComponent } from './component/delete/delete.component';
 import { EditComponent } from './component/edit/edit.component';
 import { CreateuserComponent } from './component/createuser/createuser.component';
 import { DeleteRComponent } from './component/delete-r/delete-r.component';
 import { CreaterestaurantComponent } from './component/createrestaurant/createrestaurant.component';
+import { ProductComponent } from './component/product/product.component';
+import {ProductService} from './service/product.service';
 
 
 @NgModule({
@@ -30,12 +31,12 @@ import { CreaterestaurantComponent } from './component/createrestaurant/createre
     AdminComponent,
     UserComponent,
     RestaurantComponent,
-    RestaurantelistComponent,
     DeleteComponent,
     EditComponent,
     CreateuserComponent,
     DeleteRComponent,
     CreaterestaurantComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +54,7 @@ import { CreaterestaurantComponent } from './component/createrestaurant/createre
     LoginService,
     UserService,
     RestaurantService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

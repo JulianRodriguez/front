@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../model/user.model';
 import {Restaurant} from '../model/restaurant.model';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 
 @Injectable()
@@ -39,14 +41,11 @@ export class RestaurantService {
   }
 
   getByIdUser(id: number) {
-    alert(id);
-    console.log(id);
     const urlFull = this.urlBase + 'user/' + id + '/restaurant';
     return this.http.get<Restaurant[]>(urlFull, this.options);
   }
 
   deleterestaurant(restaurant: Restaurant) {
-    console.log(restaurant.idRestaurant);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
@@ -60,7 +59,6 @@ export class RestaurantService {
 
   addrestaurant(name: string, description: string, user: User) {
 
-    console.log(user.idUser);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
@@ -72,7 +70,6 @@ export class RestaurantService {
       nameRestaurant: name,
       descriptionRestaurant: description,
     }, this.options);
-    console.log('adios');
   }
 
 }

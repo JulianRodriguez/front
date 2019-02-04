@@ -30,7 +30,7 @@ export class UserService {
     localStorage.setItem('currentUser', JSON.stringify(connected));
   }
 
-  getUserLoggedIn() {
+  getUserLoggedIn(): Connected {
     return JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -40,7 +40,6 @@ export class UserService {
 
   adduser(username: string, password: string, role: number, name: string, phone: string, email: string) {
 
-    console.log('en el servicio');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
@@ -56,28 +55,21 @@ export class UserService {
       email: email,
       phone: phone,
     }, this.options);
-    console.log('adios');
   }
-  // edituser(password: string, name: string, email: string) {
-  //
-  //   console.log('editando');
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': '*'
-  //   });
-  //   this.options = { headers: headers,
-  //     withCredentials: true};
-  //
-  //   return this.http.put<User>('http://localhost:8080/user', {
-  //     password: password,
-  //     name: name,
-  //     email: email,
-  //   }, this.options);
-  //   console.log('adios');
-  // };
+
+  getUser(id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+
+    this.options = { headers: headers,
+      withCredentials: true};
+
+    return this.http.get<User>('http://localhost:8080/user/' + id, this.options);
+  }
 
   deleteuser(user: User) {
-    console.log('en el delete');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
