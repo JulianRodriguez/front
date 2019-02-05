@@ -48,9 +48,9 @@
         <div class="col-sm-6">
           <h2>Administración de <b>Productos</b></h2>
         </div>
-        <div class="col-sm-6">
-          <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-        </div>
+        <!--<div class="col-sm-6">-->
+          <!--<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>-->
+        <!--</div>-->
       </div>
     </div>
     <div class="table-responsive">
@@ -73,8 +73,9 @@
           <!--<td>{{(getUser(restaurant.idUser) | async)?.name}}</td>-->
           <td>
             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <a href="#deleteEmployeeModal" (click)="changeProductSelected(product)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             <!--<app-delete-r [RestaurantToDelete]="RestaurantSelected"></app-delete-r>-->
+            <app-delete-p [ProductToDelete]="ProductSelected"></app-delete-p>
           </td>
         </tr>
         </tbody>

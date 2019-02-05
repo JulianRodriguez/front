@@ -218,3 +218,6 @@ table.table .avatar {
 .modal form label {
   font-weight: normal;
 }
+.btn-default {
+  background-color: #cccccc;
+}

@@ -21,6 +21,9 @@ import { DeleteRComponent } from './component/delete-r/delete-r.component';
 import { CreaterestaurantComponent } from './component/createrestaurant/createrestaurant.component';
 import { ProductComponent } from './component/product/product.component';
 import {ProductService} from './service/product.service';
+import { CreateproductComponent } from './component/createproduct/createproduct.component';
+import { DeletePComponent } from './component/delete-p/delete-p.component';
+import { PaginationComponent } from './component/pagination/pagination.component';
 
 
 @NgModule({
@@ -37,6 +40,8 @@ import {ProductService} from './service/product.service';
     DeleteRComponent,
     CreaterestaurantComponent,
     ProductComponent,
+    CreateproductComponent,
+    DeletePComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,7 @@ import {ProductService} from './service/product.service';
     LoginService,
     UserService,
     RestaurantService,
-    ProductService
+    ProductService,
   ],
   bootstrap: [AppComponent]
 })

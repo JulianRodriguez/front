@@ -38,6 +38,12 @@ export class UserService {
     return this.http.get<User[]>(this.url, this.options);
   }
 
+  getTotal() {
+    return this.http.get<number>('http://localhost:8080/user/total', this.options);
+  }
+
+
+
   adduser(username: string, password: string, role: number, name: string, phone: string, email: string) {
 
     const headers = new HttpHeaders({
@@ -79,6 +85,32 @@ export class UserService {
       withCredentials: true};
 
     return this.http.delete<User>('http://localhost:8080/user/' + user.idUser, this.options);
+  }
+
+  // pages2() {
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*'
+  //   });
+  //
+  //   this.options = { headers: headers,
+  //     withCredentials: true};
+  //
+  //   return this.http.get<User[]>('http://localhost:8080/user?page=2', this.options);
+  // }
+
+
+
+  getAll2() {
+    return this.http.get<User[]>('http://localhost:8080/user?page=1', this.options);
+  }
+
+  getAll1() {
+    return this.http.get<User[]>('http://localhost:8080/user?page=0', this.options);
+  }
+
+  getAll3() {
+    return this.http.get<User[]>('http://localhost:8080/user?page=2', this.options);
   }
 
 

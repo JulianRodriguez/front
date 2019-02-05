@@ -32,4 +32,34 @@ export class ProductService {
     const urlFull = this.urlBase + 'restaurant/' + id + '/product';
     return this.http.get<Product[]>(urlFull, this.options);
   }
+
+  addproduct(name: string, description: string, restaurant: Restaurant) {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
+
+    console.log('Esto es el restaurante');
+    console.log(restaurant);
+
+    return this.http.post<Product>('http://localhost:8080/restaurant/' + restaurant.idRestaurant + '/product', {
+      name: name,
+      description: description,
+    }, this.options);
+  }
+
+  deleteproduct(product: Product) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+
+    this.options = { headers: headers, body: product,
+      withCredentials: true};
+
+    return this.http.delete<Product>('http://localhost:8080/product/' + product.idProduct, this.options);
+  }
 }

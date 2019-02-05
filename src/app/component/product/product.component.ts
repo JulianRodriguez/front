@@ -13,6 +13,7 @@ import {RestaurantService} from '../../service/restaurant.service';
 export class ProductComponent implements OnInit {
 
   products: Array<Product>;
+  ProductSelected: Product;
   constructor(private productService: ProductService,
               private restaurantService: RestaurantService,
               private userService: UserService) { }
@@ -34,6 +35,10 @@ export class ProductComponent implements OnInit {
         }
       });
     }
+  }
+
+  changeProductSelected(ProductSelected: Product) {
+    this.ProductSelected = ProductSelected;
   }
 
 

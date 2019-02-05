@@ -106,14 +106,17 @@
         </thead>
         <tbody>
         <tr *ngFor="let user of users; index as i">
-          <th scope="row">{{i+1}}</th>
+          <!--<th scope="row">{{i+1}}</th>-->
+          <th scope="row">{{user.idUser}}</th>
+          <!--<th scope="row"></th>-->
+
           <td>{{user.name}}</td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>
-            <a href="#editEmployeeModal" (click)="changeUserSelected(user)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
             <a href="#addEmployeeModal" (click)="changeUserSelected(user)" class="create" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Crear Restaurante">restaurant</i></a>
-            <a href="#deleteEmployeeModal" (click)="changeUserSelected(user)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <a href="#editEmployeeModal" (click)="changeUserSelected(user)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar Usuario">&#xE254;</i></a>
+            <a href="#deleteEmployeeModal" (click)="changeUserSelected(user)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar Usuario">&#xE872;</i></a>
             <app-delete [userToDelete]="userSelected"></app-delete>
             <app-createrestaurant *ngIf="userSelected" [RestaurantTocreate]="userSelected"></app-createrestaurant>
             <!--<app-edit [userToEdit]="user"></app-edit>-->
@@ -123,15 +126,13 @@
       </table>
       </div>
       <div class="clearfix">
-        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <div class="hint-text">Showing <b>1</b> out of <b>{{users.length}}</b> entries</div>
         <ul class="pagination">
-          <li class="page-item disabled"><a href="#">Previous</a></li>
-          <li class="page-item"><a href="#" class="page-link">1</a></li>
-          <li class="page-item"><a href="#" class="page-link">2</a></li>
-          <li class="page-item active"><a href="#" class="page-link">3</a></li>
-          <li class="page-item"><a href="#" class="page-link">4</a></li>
-          <li class="page-item"><a href="#" class="page-link">5</a></li>
-          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+          <!--<li class="page-item disabled"><a href="#">Previous</a></li>-->
+          <li class="page-item"><a class="page-link" (click)=page1()>1</a></li>
+          <li class="page-item"><a class="page-link" (click)=page2()>2</a></li>
+          <li class="page-item "><a class="page-link" (click)=page3()>3</a></li>
+          <!--<li class="page-item"><a href="#" class="page-link">Next</a></li>-->
         </ul>
       </div>
     </div>
