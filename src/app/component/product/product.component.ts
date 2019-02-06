@@ -4,6 +4,7 @@ import {ProductService} from '../../service/product.service';
 import {Restaurant} from '../../model/restaurant.model';
 import {UserService} from '../../service/user.service';
 import {RestaurantService} from '../../service/restaurant.service';
+import {User} from '../../model/user.model';
 
 @Component({
   selector: 'app-product',
@@ -14,15 +15,23 @@ export class ProductComponent implements OnInit {
 
   products: Array<Product>;
   ProductSelected: Product;
+  totalProducts: number;
+  pagination: number;
+
   constructor(private productService: ProductService,
               private restaurantService: RestaurantService,
               private userService: UserService) { }
 
   ngOnInit() {
 
+    this.productService.getTotal().subscribe( total => {
+      this.totalProducts = total as unknown as number;
+      this.pagination = Math.ceil(this.totalProducts / 10);
+    })
+
     const user = this.userService.getUserLoggedIn();
     if (user.rolename === 'ADMIN') {
-      this.productService.getAll().subscribe(products => {
+      this.productService.getAll(0).subscribe(products => {
         this.products = products as unknown as Array<Product>;
       });
     } else {
@@ -39,6 +48,12 @@ export class ProductComponent implements OnInit {
 
   changeProductSelected(ProductSelected: Product) {
     this.ProductSelected = ProductSelected;
+  }
+
+  getProductsPaginate(page) {
+    this.productService.getAll(page).subscribe( products => {
+      this.products = products as unknown as Array<User>;
+    });
   }
 
 

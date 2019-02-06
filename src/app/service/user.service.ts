@@ -34,8 +34,12 @@ export class UserService {
     return JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  getAll() {
-    return this.http.get<User[]>(this.url, this.options);
+  getAll(page: number) {
+    let url = this.url;
+    if (page) {
+      url += '?page=' + page;
+    }
+    return this.http.get<User[]>(url, this.options);
   }
 
   getTotal() {
@@ -99,19 +103,6 @@ export class UserService {
   //   return this.http.get<User[]>('http://localhost:8080/user?page=2', this.options);
   // }
 
-
-
-  getAll2() {
-    return this.http.get<User[]>('http://localhost:8080/user?page=1', this.options);
-  }
-
-  getAll1() {
-    return this.http.get<User[]>('http://localhost:8080/user?page=0', this.options);
-  }
-
-  getAll3() {
-    return this.http.get<User[]>('http://localhost:8080/user?page=2', this.options);
-  }
 
 
 

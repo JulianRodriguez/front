@@ -82,9 +82,9 @@
         </tbody>
       </table>
     </div>
-    <!--<div class="clearfix">-->
+    <div class="clearfix">
       <!--<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>-->
-      <!--<ul class="pagination">-->
+      <ul class="pagination">
         <!--<li class="page-item disabled"><a href="#">Previous</a></li>-->
         <!--<li class="page-item"><a href="#" class="page-link">1</a></li>-->
         <!--<li class="page-item"><a href="#" class="page-link">2</a></li>-->
@@ -94,10 +94,17 @@
         <!--<li class="page-item"><a href="#" class="page-link">Next</a></li>-->
       <!--</ul>-->
     <!--</div>-->
-    <div ng-controller="StudentCtrl as vm">
-      <div ui-grid="gridOptions" class="grid" ui-grid-pagination>
-      </div>
+        <li class="page-item">
+          <a href="#paginateR" class="page-link" ></a>
+          <app-paginate-r (restaurantPage)="getRestaurantPaginate($event)"></app-paginate-r>
+        </li>
+      </ul>
     </div>
+
+      <div ng-controller="StudentCtrl as vm">
+        <div ui-grid="gridOptions" class="grid" ui-grid-pagination>
+        </div>
+      </div>
   </div>
 </div>
 <app-createrestaurant></app-createrestaurant>

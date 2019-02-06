@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../model/user.model';
 import {UserService} from '../../service/user.service';
 
@@ -12,6 +12,7 @@ export class UserComponent implements OnInit {
   users: Array<User>;
   userSelected: User;
   totalUsers: number;
+  pagination: number;
 
   constructor(private userService: UserService) { }
 
@@ -19,9 +20,10 @@ export class UserComponent implements OnInit {
 
     this.userService.getTotal().subscribe( total => {
       this.totalUsers = total as unknown as number;
-      console.log(this.totalUsers);
+      this.pagination = Math.ceil(this.totalUsers / 10);
+      console.log(this.pagination);
     })
-    this.userService.getAll().subscribe(users => {
+    this.userService.getAll(0).subscribe(users => {
       this.users = users as unknown as Array<User>;
     });
   }
@@ -38,22 +40,9 @@ export class UserComponent implements OnInit {
     this.userSelected = userSelected;
   }
 
-  page3() {
-    this.userService.getAll3().subscribe(users => {
-      this.users = users as unknown as Array<User>;
-    });
-  }
-  page2() {
-    this.userService.getAll2().subscribe(users => {
-      this.users = users as unknown as Array<User>;
-    });
-  }
-  page1(obj) {
-    console.log('PRUEBA:');
-    console.log(obj);
-
-    this.userService.getAll1().subscribe(users => {
-      this.users = users as unknown as Array<User>;
+  getUsersPaginate(page) {
+    this.userService.getAll(page).subscribe( users => {
+        this.users = users as unknown as Array<User>;
     });
   }
 

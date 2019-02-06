@@ -21,7 +21,7 @@ export class RestaurantComponent implements OnInit {
     const user = this.userService.getUserLoggedIn();
 
     if (user.rolename === 'ADMIN') {
-      this.restaurantService.getAll().subscribe(restaurants => {
+      this.restaurantService.getAll(0).subscribe(restaurants => {
         this.restaurants = restaurants as unknown as Array<Restaurant>;
       });
     } else {
@@ -34,8 +34,10 @@ export class RestaurantComponent implements OnInit {
     this.RestaurantSelected = RestaurantSelected;
   }
 
-  getUser(id: number) {
-    return this.userService.getUser(id);
+  getRestaurantPaginate(page) {
+    this.restaurantService.getAll(page).subscribe( restaurants => {
+      this.restaurants = restaurants as unknown as Array<Restaurant>;
+    });
   }
 
 }

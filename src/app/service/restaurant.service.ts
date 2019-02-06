@@ -36,8 +36,12 @@ export class RestaurantService {
     return JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  getAll() {
-    return this.http.get<Restaurant[]>(this.url, this.options);
+  getAll(page: number) {
+    let url = this.url;
+    if (page) {
+      url += '?page=' + page;
+    }
+    return this.http.get<Restaurant[]>(url, this.options);
   }
 
   getByIdUser(id: number) {
@@ -70,6 +74,10 @@ export class RestaurantService {
       nameRestaurant: name,
       descriptionRestaurant: description,
     }, this.options);
+  }
+
+  getTotalRestaurant() {
+    return this.http.get<number>('http://localhost:8080/restaurant/total', this.options);
   }
 
 }

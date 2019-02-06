@@ -1,0 +1,4 @@
+<div id="paginate">
+  <li *ngFor="let item of [].constructor(totalRestaurant) | paginate: { itemsPerPage:10, currentPage: p }"></li>
+</div>
+<pagination-controls (pageChange)="p =$event" (click)="emitRestaurant(p-1)"></pagination-controls>

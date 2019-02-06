@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Product} from '../model/product.model';
 import {Restaurant} from '../model/restaurant.model';
+import {User} from '../model/user.model';
 
 @Injectable()
 export class ProductService {
@@ -24,8 +25,12 @@ export class ProductService {
     };
   }
 
-  getAll() {
-    return this.http.get<Product[]>(this.url, this.options);
+  getAll(page: number) {
+    let url = this.url;
+    if (page) {
+      url += '?page=' + page;
+    }
+    return this.http.get<Product[]>(url, this.options);
   }
 
   getByIdRestaurant(id: number) {
@@ -61,5 +66,9 @@ export class ProductService {
       withCredentials: true};
 
     return this.http.delete<Product>('http://localhost:8080/product/' + product.idProduct, this.options);
+  }
+
+  getTotal() {
+    return this.http.get<number>('http://localhost:8080/product/total', this.options);
   }
 }

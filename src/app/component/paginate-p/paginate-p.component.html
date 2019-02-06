@@ -1,0 +1,4 @@
+<div id="paginateP">
+  <li *ngFor="let item of [].constructor(totalProduct) | paginate: { itemsPerPage:10, currentPage: p }"></li>
+</div>
+<pagination-controls (pageChange)="p =$event" (click)="emitProducts(p-1)"></pagination-controls>

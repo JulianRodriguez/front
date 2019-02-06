@@ -23,8 +23,10 @@ import { ProductComponent } from './component/product/product.component';
 import {ProductService} from './service/product.service';
 import { CreateproductComponent } from './component/createproduct/createproduct.component';
 import { DeletePComponent } from './component/delete-p/delete-p.component';
-import { PaginationComponent } from './component/pagination/pagination.component';
-
+import { PaginateComponent } from './component/paginate/paginate.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { PaginateRComponent } from './component/paginate-r/paginate-r.component';
+import { PaginatePComponent } from './component/paginate-p/paginate-p.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,9 @@ import { PaginationComponent } from './component/pagination/pagination.component
     ProductComponent,
     CreateproductComponent,
     DeletePComponent,
+    PaginateComponent,
+    PaginateRComponent,
+    PaginatePComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,8 @@ import { PaginationComponent } from './component/pagination/pagination.component
     MatIconModule,
     MatListModule,
     BrowserAnimationsModule,
+    NgxPaginationModule
+
   ],
   providers: [
     LoginService,
