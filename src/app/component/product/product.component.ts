@@ -52,7 +52,7 @@ export class ProductComponent implements OnInit {
 
   getProductsPaginate(page) {
     this.productService.getAll(page).subscribe( products => {
-      this.products = products as unknown as Array<User>;
+      this.products = products as unknown as Array<Product>;
     });
   }
 
