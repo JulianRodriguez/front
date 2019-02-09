@@ -12,6 +12,7 @@ export class UserService {
   private isUserLoggedIn;
   public usserLogged: Connected;
   private options;
+  private query = '?searchName=';
 
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = false;
@@ -42,11 +43,14 @@ export class UserService {
     return this.http.get<User[]>(url, this.options);
   }
 
+  get(term: string) {
+    console.log(term);
+    return this.http.get<User[]>(this.url + this.query + term , this.options);
+  }
+
   getTotal() {
     return this.http.get<number>('http://localhost:8080/user/total', this.options);
   }
-
-
 
   adduser(username: string, password: string, role: number, name: string, phone: string, email: string) {
 
