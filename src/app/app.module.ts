@@ -27,8 +27,8 @@ import { PaginateComponent } from './component/paginate/paginate.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { PaginateRComponent } from './component/paginate-r/paginate-r.component';
 import { PaginatePComponent } from './component/paginate-p/paginate-p.component';
-import {SearchComponent} from './search/search.component';
 import {SearchService} from './service/search.service';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [

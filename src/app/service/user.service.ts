@@ -45,6 +45,7 @@ export class UserService {
 
   get(term: string) {
     console.log(term);
+    console.log(this.url + this.query + term);
     return this.http.get<User[]>(this.url + this.query + term , this.options);
   }
 

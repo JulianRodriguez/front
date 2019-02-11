@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../model/user.model';
 import {UserService} from '../../service/user.service';
+import {Observable} from 'rxjs';
+import {SearchService} from '../../service/search.service';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +16,9 @@ export class UserComponent implements OnInit {
   totalUsers: number;
   pagination: number;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private searchService: SearchService) {
+  }
 
   ngOnInit() {
 
@@ -22,9 +26,16 @@ export class UserComponent implements OnInit {
       this.totalUsers = total as unknown as number;
       this.pagination = Math.ceil(this.totalUsers / 10);
       console.log(this.pagination);
-    })
+    });
+
     this.userService.getAll(0).subscribe(users => {
       this.users = users as unknown as Array<User>;
+    });
+
+    this.searchService.changed.subscribe(() => {
+      console.log('Pero aquí no');
+      console.log(this.searchService.users);
+      this.users = this.searchService.users;
     });
   }
   // adduser(username: string, password: string, role: number, name: string, phone: string, email: string ) {
