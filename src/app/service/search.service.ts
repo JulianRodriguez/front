@@ -9,8 +9,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable()
 export class SearchService {
 
-  public terms = '';
-  public changed: EventEmitter = new EventEmitter();
+  public changed: EventEmitter<boolean> = new EventEmitter<boolean>();
   public users: Array<User>;
   private query = '?searchName=';
   private options;
@@ -26,23 +25,21 @@ export class SearchService {
   }
 
   search(terms: Observable<string>): Observable<Array<User>> {
-    this.terms = terms;
-
     return terms.pipe(
       debounceTime(500),
       distinctUntilChanged(),
       switchMap(source => this.searchEntries(source)));
   }
 
-  searchEntries(term): Array<User> {
+  searchEntries(term): Observable<Array<User>> {
     // return this.userService.get(undefined, undefined, { freeSearch: term}) as unknown as Observable<Array<User>>;
 
     this.userService.get(term).subscribe(users => {
-      this.users = users;
+      this.users = users as unknown as Array<User>;
       this.changedFunction();
       }
     );
-    return this.userService.get(term);
+    return this.userService.get(term) as unknown as Observable<Array<User>>;
 
     // return this.http.get<User>( this.url + this.query + { freeSearch: term}, this.options)as unknown as Observable<Array<User>>;
   }

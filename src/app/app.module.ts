@@ -29,6 +29,9 @@ import { PaginateRComponent } from './component/paginate-r/paginate-r.component'
 import { PaginatePComponent } from './component/paginate-p/paginate-p.component';
 import {SearchService} from './service/search.service';
 import { SearchComponent } from './search/search.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +65,8 @@ import { SearchComponent } from './search/search.component';
     MatIconModule,
     MatListModule,
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    InfiniteScrollModule
 
   ],
   providers: [
@@ -75,3 +79,6 @@ import { SearchComponent } from './search/search.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+

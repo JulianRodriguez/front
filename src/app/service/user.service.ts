@@ -13,6 +13,8 @@ export class UserService {
   public usserLogged: Connected;
   private options;
   private query = '?searchName=';
+  private term;
+  private total = 0;
 
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = false;
@@ -46,12 +48,11 @@ export class UserService {
   get(term: string) {
     console.log(term);
     console.log(this.url + this.query + term);
+    this.term = term;
     return this.http.get<User[]>(this.url + this.query + term , this.options);
   }
 
-  getTotal() {
-    return this.http.get<number>('http://localhost:8080/user/total', this.options);
-  }
+
 
   adduser(username: string, password: string, role: number, name: string, phone: string, email: string) {
 
@@ -94,6 +95,16 @@ export class UserService {
       withCredentials: true};
 
     return this.http.delete<User>('http://localhost:8080/user/' + user.idUser, this.options);
+  }
+
+  getTotal() {
+    return this.http.get<number>('http://localhost:8080/user/total', this.options);
+  }
+
+  getSearchTotal() {
+    console.log('TÉRMINO');
+    console.log(this.term);
+    return this.http.get<number>('http://localhost:8080/user/searchTotal?' + this.term, this.options);
   }
 
   // pages2() {
