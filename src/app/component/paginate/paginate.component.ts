@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/user.model';
 import {SearchService} from '../../service/search.service';
+import {PaginationControlsComponent} from 'ngx-pagination';
 
 @Component({
   selector: 'app-paginate',
@@ -12,6 +13,7 @@ export class PaginateComponent implements OnInit {
 
   @Output() userPage = new EventEmitter<number>();
 
+  miElemento;
   collection = [];
   totalUsers: number;
   pagination: number;
@@ -27,13 +29,32 @@ export class PaginateComponent implements OnInit {
       console.log(this.totalUsers);
     });
 
+    searchService.changed.subscribe(() => {
+      this.updatePaginate();
+    });
+  }
+
+  updatePaginate() {
+
+    this.userService.getSearchTotal().subscribe(total => {
+      console.log('estoy aki');
+      console.log(total);
+      this.totalUsers = total as unknown as number;
+      this.pagination = Math.ceil(this.totalUsers / 10);
+      console.log(this.pagination);
+    });
+
+    this.emitUsers(0);
   }
 
   ngOnInit() {
   }
 
-  emitUsers(p: number) {
-    console.log("Emitido evento");
+  emitUsers(p: number, miElemento?) {
+
+    if (miElemento) {this.miElemento = miElemento; }
+
     this.userPage.emit(p);
+    this.miElemento.pageChange.emit(p);
   }
 }

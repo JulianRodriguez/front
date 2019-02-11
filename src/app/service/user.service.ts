@@ -3,6 +3,7 @@ import {User} from '../model/user.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Connected} from '../model/connected.model';
+import {SearchService} from './search.service';
 
 
 @Injectable()
@@ -12,8 +13,9 @@ export class UserService {
   private isUserLoggedIn;
   public usserLogged: Connected;
   private options;
-  private query = '?searchName=';
-  private term;
+  private queryForSearch = '?searchName=';
+  private queryForPage = '&page=';
+  public term;
   private total = 0;
 
   constructor(private http: HttpClient) {
@@ -38,18 +40,24 @@ export class UserService {
   }
 
   getAll(page: number) {
-    let url = this.url;
-    if (page) {
-      url += '?page=' + page;
+
+    if (!this.term) {
+      let url = this.url;
+      if (page) {
+        url += '?page=' + page;
+      }
+      return this.http.get<User[]>(url, this.options);
+    } else {
+      return this.get(this.term, page);
     }
-    return this.http.get<User[]>(url, this.options);
   }
 
-  get(term: string) {
-    console.log(term);
-    console.log(this.url + this.query + term);
+  get(term: string, page?: number) {
+
     this.term = term;
-    return this.http.get<User[]>(this.url + this.query + term , this.options);
+    if (!page) { page = 0; }
+
+    return this.http.get<User[]>(this.url + this.queryForSearch + term + this.queryForPage + page, this.options);
   }
 
 
@@ -104,7 +112,7 @@ export class UserService {
   getSearchTotal() {
     console.log('TÉRMINO');
     console.log(this.term);
-    return this.http.get<number>('http://localhost:8080/user/searchTotal?' + this.term, this.options);
+    return this.http.get<number>('http://localhost:8080/user/searchTotal?searchName=' + this.term, this.options);
   }
 
   // pages2() {

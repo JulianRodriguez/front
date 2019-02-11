@@ -22,11 +22,11 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userService.getTotal().subscribe( total => {
-      this.totalUsers = total as unknown as number;
-      this.pagination = Math.ceil(this.totalUsers / 10);
-      console.log(this.pagination);
-    });
+    // this.userService.getTotal().subscribe( total => {
+    //   this.totalUsers = total as unknown as number;
+    //   this.pagination = Math.ceil(this.totalUsers / 10);
+    //   console.log(this.pagination);
+    // });
 
     this.userService.getAll(0).subscribe(users => {
       this.users = users as unknown as Array<User>;
