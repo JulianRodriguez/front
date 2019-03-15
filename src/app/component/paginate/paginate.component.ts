@@ -30,6 +30,7 @@ export class PaginateComponent implements OnInit {
     });
 
     searchService.changed.subscribe(() => {
+      console.log('cambiamos');
       this.updatePaginate();
     });
   }
@@ -42,6 +43,11 @@ export class PaginateComponent implements OnInit {
       this.totalUsers = total as unknown as number;
       this.pagination = Math.ceil(this.totalUsers / 10);
       console.log(this.pagination);
+
+      this.searchService.changed.subscribe(() => {
+        console.log('cambiamos');
+        this.updatePaginate();
+      });
     });
 
     this.emitUsers(0);
@@ -55,6 +61,9 @@ export class PaginateComponent implements OnInit {
     if (miElemento) {this.miElemento = miElemento; }
 
     this.userPage.emit(p);
-    this.miElemento.pageChange.emit(p);
+
+    if (miElemento) {
+      this.miElemento.pageChange.emit(p);
+    }
   }
 }

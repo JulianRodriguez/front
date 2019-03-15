@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable, OnChanges} from '@angular/core';
+import {EventEmitter, Injectable, OnChanges, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {UserService} from './user.service';
@@ -6,12 +6,13 @@ import {User} from '../model/user.model';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 
-
 @Injectable()
 export class SearchService {
 
-  public changed: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public changed: EventEmitter<any> = new EventEmitter<any>();
   public users: Array<User>;
+
+  private switcher = Boolean(false);
 
   constructor(private userService: UserService, private http: HttpClient, private router: Router) {}
 
@@ -41,7 +42,10 @@ export class SearchService {
 
   changedFunction() {
     if (this.users !== undefined) {
-      this.changed.emit(true);
+      console.log('vamos por diooooo');
+      this.switcher = Boolean(!this.switcher);
+      console.log(this.switcher);
+      this.changed.emit(this.switcher);
     }
   }
 }
