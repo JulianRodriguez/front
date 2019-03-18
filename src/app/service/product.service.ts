@@ -11,6 +11,9 @@ export class ProductService {
   private url = 'http://localhost:8080/product';
   private options;
   private isUserLoggedIn;
+  private queryForSearch = '?searchName=';
+  private queryForPage = '&page=';
+  public term;
 
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = false;
@@ -31,6 +34,14 @@ export class ProductService {
       url += '?page=' + page;
     }
     return this.http.get<Product[]>(url, this.options);
+  }
+
+  get(term: string, page?: number) {
+
+    this.term = term;
+    if (!page) { page = 0; }
+
+    return this.http.get<Product[]>(this.url + this.queryForSearch + term + this.queryForPage + page, this.options);
   }
 
   getByIdRestaurant(id: number) {

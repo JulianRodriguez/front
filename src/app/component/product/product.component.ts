@@ -5,6 +5,7 @@ import {Restaurant} from '../../model/restaurant.model';
 import {UserService} from '../../service/user.service';
 import {RestaurantService} from '../../service/restaurant.service';
 import {User} from '../../model/user.model';
+import {SearchService} from '../../service/search.service';
 
 @Component({
   selector: 'app-product',
@@ -20,9 +21,16 @@ export class ProductComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private restaurantService: RestaurantService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private searchService: SearchService) { }
 
   ngOnInit() {
+
+    this.searchService.changed.subscribe(() => {
+      console.log('Pero aquí no');
+      console.log(this.searchService.productos);
+      this.products = this.searchService.productos;
+    });
 
     this.productService.getTotal().subscribe( total => {
       this.totalProducts = total as unknown as number;

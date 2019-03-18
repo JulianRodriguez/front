@@ -7,6 +7,8 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {RestaurantService} from './restaurant.service';
 import {Restaurant} from '../model/restaurant.model';
+import {ProductService} from './product.service';
+import {Product} from '../model/product.model';
 
 @Injectable()
 export class SearchService {
@@ -14,10 +16,15 @@ export class SearchService {
   public changed: EventEmitter<any> = new EventEmitter<any>();
   public users: Array<User>;
   public restaurantes: Array<Restaurant>;
+  public productos: Array<Product>;
 
   private switcher = Boolean(false);
 
-  constructor(private userService: UserService, private http: HttpClient, private router: Router, private restaurantService: RestaurantService) {}
+  constructor(private userService: UserService,
+              private http: HttpClient,
+              private router: Router,
+              private restaurantService: RestaurantService,
+              private productService: ProductService) {}
 
   search(terms: Observable<string>): Observable<any[]> {
     return terms.pipe(
@@ -49,6 +56,16 @@ export class SearchService {
           }
         );
         return this.restaurantService.get(term) as unknown as Observable<Array<Restaurant>>;
+      } else {
+        if (cad === '/product') {
+          console.log('estoy en el producto');
+          this.productService.get(term).subscribe(productos => {
+              this.productos = productos as unknown as Array<Product>;
+              this.changedFunctionP();
+            }
+          );
+          return this.productService.get(term) as unknown as Observable<Array<Product>>;
+        }
       }
     }
     // return this.http.get<User>( this.url + this.query + { freeSearch: term}, this.options)as unknown as Observable<Array<User>>;
@@ -65,6 +82,15 @@ export class SearchService {
 
   changedFunctionR() {
     if (this.restaurantes !== undefined) {
+      console.log('vamos por diooooo Restaurante');
+      this.switcher = Boolean(!this.switcher);
+      console.log(this.switcher);
+      this.changed.emit(this.switcher);
+    }
+  }
+
+  changedFunctionP() {
+    if (this.productos !== undefined) {
       console.log('vamos por diooooo Restaurante');
       this.switcher = Boolean(!this.switcher);
       console.log(this.switcher);
