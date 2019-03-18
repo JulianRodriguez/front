@@ -60,6 +60,13 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(urlFull, this.options);
   }
 
+  getByIdUserAndName(id: number, term: string, page?: number) {
+    this.term = term;
+    if (!page) { page = 0; }
+    const urlFull = this.urlBase + 'user/' + id + '/restaurant' + this.queryForSearch + term;
+
+    return this.http.get<Restaurant[]>(urlFull, this.options);
+  }
   deleterestaurant(restaurant: Restaurant) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

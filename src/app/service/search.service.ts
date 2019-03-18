@@ -35,22 +35,46 @@ export class SearchService {
 
   searchEntries(term): Observable<any[]> {
 
+    const user = this.userService.getUserLoggedIn();
+    console.log(user.rolename);
     const cad = this.router.url;
-    //TODO Comprobamos la ruta con if y vamos tirando segun
     console.log(cad);
-    // return this.userService.get(undefined, undefined, { freeSearch: term}) as unknown as Observable<Array<User>>;
-    if (cad === '/user') {
-      console.log('estoy aqui');
-      this.userService.get(term).subscribe(users => {
-          this.users = users as unknown as Array<User>;
-          this.changedFunctionU();
+    if (user.rolename === 'ADMIN') {
+      if (cad === '/user') {
+        console.log('estoy aqui');
+        this.userService.get(term).subscribe(users => {
+            this.users = users as unknown as Array<User>;
+            this.changedFunctionU();
+          }
+        );
+        return this.userService.get(term) as unknown as Observable<Array<User>>;
+      } else {
+        if (cad === '/restaurant') {
+          console.log('estoy en restaurante');
+          this.restaurantService.get(term).subscribe(restaurants => {
+              this.restaurantes = restaurants as unknown as Array<Restaurant>;
+              this.changedFunctionR();
+            }
+          );
+          return this.restaurantService.get(term) as unknown as Observable<Array<Restaurant>>;
+        } else {
+          if (cad === '/product') {
+            console.log('estoy en el producto');
+            this.productService.get(term).subscribe(productos => {
+                this.productos = productos as unknown as Array<Product>;
+                this.changedFunctionP();
+              }
+            );
+            return this.productService.get(term) as unknown as Observable<Array<Product>>;
+          }
         }
-      );
-      return this.userService.get(term) as unknown as Observable<Array<User>>;
+      }
     } else {
+      console.log('SOY USER');
+      //TODO cambiar los metodos para que busque por id y name
       if (cad === '/restaurant') {
         console.log('estoy en restaurante');
-        this.restaurantService.get(term).subscribe(restaurants => {
+        this.restaurantService.getByIdUserAndName(user.idUser, term).subscribe(restaurants => {
             this.restaurantes = restaurants as unknown as Array<Restaurant>;
             this.changedFunctionR();
           }
@@ -68,7 +92,6 @@ export class SearchService {
         }
       }
     }
-    // return this.http.get<User>( this.url + this.query + { freeSearch: term}, this.options)as unknown as Observable<Array<User>>;
   }
 
   changedFunctionU() {
