@@ -14,6 +14,9 @@ export class RestaurantService {
   private isUserLoggedIn;
   public usserLogged: User;
   private options;
+  public term;
+  private queryForSearch = '?searchName=';
+  private queryForPage = '&page=';
 
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = false;
@@ -34,6 +37,14 @@ export class RestaurantService {
 
   getUserLoggedIn() {
     return JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  get(term: string, page?: number) {
+
+    this.term = term;
+    if (!page) { page = 0; }
+
+    return this.http.get<Restaurant[]>(this.url + this.queryForSearch + term + this.queryForPage + page, this.options);
   }
 
   getAll(page: number) {

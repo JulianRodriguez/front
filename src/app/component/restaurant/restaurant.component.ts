@@ -3,6 +3,7 @@ import {Restaurant} from '../../model/restaurant.model';
 import {RestaurantService} from '../../service/restaurant.service';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/user.model';
+import {SearchService} from '../../service/search.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -15,9 +16,17 @@ export class RestaurantComponent implements OnInit {
   RestaurantSelected: Restaurant;
 
   constructor(private restaurantService: RestaurantService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private searchService: SearchService) { }
 
   ngOnInit() {
+
+    this.searchService.changed.subscribe(() => {
+      console.log('Pero aquí no Restaurante');
+      console.log(this.searchService.restaurantes);
+      this.restaurants = this.searchService.restaurantes;
+    });
+
     const user = this.userService.getUserLoggedIn();
 
     if (user.rolename === 'ADMIN') {
