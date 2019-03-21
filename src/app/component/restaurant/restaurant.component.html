@@ -73,10 +73,12 @@
           <!--<td>{{(getUser(restaurant.idUser) | async)?.name}}</td>-->
           <td>
             <a href="#addEmployeeModal" (click)="changeRestaurantSelected(restaurant)" class="create" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Crear Restaurante">fastfood</i></a>
-            <app-createproduct *ngIf="RestaurantSelected" [ProductTocreate]="RestaurantSelected"></app-createproduct>
-            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" (click)="changeRestaurantSelected(restaurant)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <a href="#editEmployeeModal" (click)="changeRestaurantSelected(restaurant)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+            <a href="#deleteEmployeeModal" (click)="changeRestaurantSelected(restaurant)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar Restaurante">&#xE872;</i></a>
+
             <app-delete-r [RestaurantToDelete]="RestaurantSelected"></app-delete-r>
+            <app-createproduct *ngIf="RestaurantSelected" [ProductTocreate]="RestaurantSelected"></app-createproduct>
+
           </td>
         </tr>
         </tbody>
@@ -106,7 +108,6 @@
       </div>
   </div>
 </div>
-<app-createrestaurant></app-createrestaurant>
 </body>
 </html>
 

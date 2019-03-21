@@ -101,6 +101,8 @@
           <th scope="col">Nombre</th>
           <th scope="col">Alias</th>
           <th scope="col">Email</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Role</th>
           <th scope="col">Acción</th>
         </tr>
         </thead>
@@ -113,10 +115,14 @@
           <td>{{user.name}}</td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
+          <td>{{user.phone}}</td>
+          <td *ngIf="user.idRole === 1">ADMIN</td>
+          <td *ngIf="user.idRole === 2">USER</td>
           <td>
             <a href="#addEmployeeModal" (click)="changeUserSelected(user)" class="create" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Crear Restaurante">restaurant</i></a>
             <a href="#editEmployeeModal" (click)="changeUserSelected(user)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar Usuario">&#xE254;</i></a>
             <a href="#deleteEmployeeModal" (click)="changeUserSelected(user)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar Usuario">&#xE872;</i></a>
+
             <app-delete [userToDelete]="userSelected"></app-delete>
             <app-createrestaurant *ngIf="userSelected" [RestaurantTocreate]="userSelected"></app-createrestaurant>
             <!--<app-edit [userToEdit]="user"></app-edit>-->

@@ -49,6 +49,13 @@ export class ProductService {
     return this.http.get<Product[]>(urlFull, this.options);
   }
 
+  getByIdRestaurantAndName(id: number, term: string, page?: number) {
+    this.term = term;
+    if (!page) { page = 0; }
+    const urlFull = this.urlBase + 'restaurant/' + id + '/product' + this.queryForSearch + term;
+    return this.http.get<Product[]>(urlFull, this.options);
+  }
+
   addproduct(name: string, description: string, restaurant: Restaurant) {
 
     const headers = new HttpHeaders({

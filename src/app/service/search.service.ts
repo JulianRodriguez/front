@@ -81,15 +81,35 @@ export class SearchService {
         );
         return this.restaurantService.get(term) as unknown as Observable<Array<Restaurant>>;
       } else {
+        // if (cad === '/product') {
+        //   console.log('estoy en el producto');
+        //   this.productService.get(term).subscribe(productos => {
+        //       this.productos = productos as unknown as Array<Product>;
+        //       this.changedFunctionP();
+        //     }
+        //   );
+        //   return this.productService.get(term) as unknown as Observable<Array<Product>>;
+        // }
+
         if (cad === '/product') {
-          console.log('estoy en el producto');
-          this.productService.get(term).subscribe(productos => {
-              this.productos = productos as unknown as Array<Product>;
-              this.changedFunctionP();
+          this.restaurantService.getByIdUser(user.idUser).subscribe((restaurants) => {
+            this.productos = new Array<Product>();
+            for (const restaurant of restaurants as unknown as Array<Restaurant>) {
+              this.productService.getByIdRestaurantAndName(restaurant.idRestaurant, term).subscribe(products => {
+                this.productos = this.productos.concat(products as unknown as Array<Product>);
+                console.log('Productos:');
+                console.log(this.productos);
+                this.changedFunctionP();
+              });
             }
-          );
+          });
           return this.productService.get(term) as unknown as Observable<Array<Product>>;
         }
+
+
+
+
+
       }
     }
   }

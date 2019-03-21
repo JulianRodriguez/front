@@ -15,6 +15,7 @@ export class CreateuserComponent implements OnInit {
   }
 
   adduser(username: string, password: string, role: number, name: string, phone: string, email: string ) {
+    console.log(role);
     event.preventDefault();
     this.userService.adduser(username, password, role, name, phone, email).subscribe(user => {
     });
