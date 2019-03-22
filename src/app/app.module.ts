@@ -31,6 +31,7 @@ import {SearchService} from './service/search.service';
 import { SearchComponent } from './search/search.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -66,7 +67,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     MatListModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ReactiveFormsModule,
+    FormsModule
 
   ],
   providers: [
