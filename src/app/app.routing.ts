@@ -4,14 +4,15 @@ import {AdminComponent} from './component/admin/admin.component';
 import {RestaurantComponent} from './component/restaurant/restaurant.component';
 import {UserComponent} from './component/user/user.component';
 import {ProductComponent} from './component/product/product.component';
+import {AuthGuard} from './guards/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  // { path: 'restaurant', component: RestaurantComponent, canActivate: [AuthGuard]},
-  { path: 'user', component: UserComponent},
-  { path: 'restaurant', component: RestaurantComponent},
-  { path: 'product', component: ProductComponent},
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+  // { path: 'user', component: UserComponent},
+  { path: 'restaurant', component: RestaurantComponent, canActivate: [AuthGuard] },
+  { path: 'product', component: ProductComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'notfound' }
 ];
 

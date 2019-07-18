@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import {LoginService} from '../../service/login.service';
 import {UserService} from '../../service/user.service';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main-nav',
@@ -36,10 +36,16 @@ export class MainNavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private userService: UserService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private userService: UserService, private router: Router) {}
 
   getRole() {
     return this.userService.getUserLoggedIn().rolename;
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/login']);
+
   }
 
 }
