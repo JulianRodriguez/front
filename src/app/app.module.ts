@@ -31,6 +31,7 @@ import {SearchService} from './service/search.service';
 import { SearchComponent } from './search/search.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ModifyuserComponent } from './component/modifyuser/modifyuser.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     PaginateRComponent,
     PaginatePComponent,
     SearchComponent,
+    ModifyuserComponent,
   ],
   imports: [
     BrowserModule,
