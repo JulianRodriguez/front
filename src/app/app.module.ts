@@ -32,6 +32,9 @@ import { SearchComponent } from './search/search.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ModifyuserComponent } from './component/modifyuser/modifyuser.component';
+import { PhotoSelectorComponent } from './component/photo-selector/photo-selector';
+import { QRComponent } from './component/qr/qr.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 
 @NgModule({
@@ -55,6 +58,8 @@ import { ModifyuserComponent } from './component/modifyuser/modifyuser.component
     PaginatePComponent,
     SearchComponent,
     ModifyuserComponent,
+    PhotoSelectorComponent,
+    QRComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +72,7 @@ import { ModifyuserComponent } from './component/modifyuser/modifyuser.component
     MatIconModule,
     MatListModule,
     BrowserAnimationsModule,
+    NgxQRCodeModule,
     NgxPaginationModule,
     InfiniteScrollModule
 

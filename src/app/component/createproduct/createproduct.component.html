@@ -23,6 +23,7 @@
             <label>Añadido al Restaurante</label>
             <input type="text" class="form-control" value="{{ProductTocreate ? ProductTocreate.nameRestaurant : ''}}" required [disabled]="ProductTocreate">
           </div>
+          <app-photo-selector [photo]="photo" (photoSelected)="photoSelected($event)"></app-photo-selector>
         </div>
         <div class="modal-footer">
           <input type="submit" class="btn btn-default" data-dismiss="modal" value="Cancel">

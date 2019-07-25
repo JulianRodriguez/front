@@ -1,0 +1,15 @@
+<div class="photo-selector">
+  <div class="input-wrapper">
+    Cargar foto
+    <div class="input-button"></div>
+    <input type="file" (change)="photoLoaded($event)">
+  </div>
+  <div class="photos-wrapper" *ngIf="photo">
+    <div class="photo-wrapper">
+      <img [src]="photo" class="img-thumbnail photo">
+      <div class="remove-photo" (click)="removePhoto()">
+        <i class="fa fa-times"></i>
+      </div>
+    </div>
+  </div>
+</div>
