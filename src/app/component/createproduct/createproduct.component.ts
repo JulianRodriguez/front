@@ -14,6 +14,8 @@ export class CreateproductComponent implements OnInit {
   @Input()
   ProductTocreate: Restaurant;
 
+  public photo: string;
+
   constructor(private productService: ProductService,
               private router: Router) { }
 
@@ -27,6 +29,10 @@ export class CreateproductComponent implements OnInit {
     this.productService.addproduct(name, description, this.ProductTocreate).subscribe(restaurant => {
       console.log(this.ProductTocreate);
     });
+  }
+
+  photoSelected(photo: string): void {
+    this.photo = photo;
   }
 
 }

@@ -10,6 +10,7 @@ export class QRComponent implements OnInit {
   @Input()
   public set productId(id) {
     this.qrValue = id + '';
+    console.log(id);
   }
   public qrValue;
 

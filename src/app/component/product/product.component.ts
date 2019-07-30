@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {Product} from '../../model/product.model';
 import {ProductService} from '../../service/product.service';
 import {Restaurant} from '../../model/restaurant.model';
@@ -6,6 +6,7 @@ import {UserService} from '../../service/user.service';
 import {RestaurantService} from '../../service/restaurant.service';
 import {User} from '../../model/user.model';
 import {SearchService} from '../../service/search.service';
+import { QRComponent } from '../qr/qr.component';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +19,9 @@ export class ProductComponent implements OnInit {
   ProductSelected: Product;
   totalProducts: number;
   pagination: number;
+
+  @ViewChild('qrModal')
+  qrModal: QRComponent;
 
   constructor(private productService: ProductService,
               private restaurantService: RestaurantService,
