@@ -9,12 +9,16 @@ export class QRComponent implements OnInit {
 
   @Input()
   public set productId(id) {
-    this.qrValue = id + '';
-    console.log(id);
+    const qr = String(id);
+    this.qrValue = qr;
   }
-  public qrValue;
+  private qrValue;
 
   constructor() { }
 
   ngOnInit() {}
+  public get qrCode() {
+    console.log(this.qrValue);
+    return this.qrValue;
+  }
 }
