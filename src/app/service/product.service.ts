@@ -56,7 +56,7 @@ export class ProductService {
     return this.http.get<Product[]>(urlFull, this.options);
   }
 
-  addproduct(name: string, description: string, restaurant: Restaurant) {
+  addproduct(name: string, description: string, photo: string, restaurant: Restaurant) {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -71,6 +71,7 @@ export class ProductService {
     return this.http.post<Product>('http://localhost:8080/restaurant/' + restaurant.idRestaurant + '/product', {
       name: name,
       description: description,
+      photo: photo,
     }, this.options);
   }
 

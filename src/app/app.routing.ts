@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   // { path: 'user', component: UserComponent},
   { path: 'restaurant', component: RestaurantComponent, canActivate: [AuthGuard] },
   { path: 'product', component: ProductComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'notfound' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
