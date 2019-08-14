@@ -13,15 +13,25 @@ export class DeletePComponent implements OnInit {
   @Input()
   ProductToDelete: Product;
 
+  public visible = false;
+
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
   }
 
+  openModal() {
+    this.visible = true;
+  }
+
+  closeModal() {
+    this.visible = false;
+  }
+
   onDeleteRestaurant() {
     console.log(this.ProductToDelete);
     this.productService.deleteproduct(this.ProductToDelete).subscribe( entrada => {
-
+      this.closeModal();
     });
 
   }

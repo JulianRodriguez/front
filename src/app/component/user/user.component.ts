@@ -1,8 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {User} from '../../model/user.model';
 import {UserService} from '../../service/user.service';
 import {Observable} from 'rxjs';
 import {SearchService} from '../../service/search.service';
+import { CreateuserComponent } from '../createuser/createuser.component';
+import { CreaterestaurantComponent } from '../createrestaurant/createrestaurant.component';
+import { ModifyuserComponent } from '../modifyuser/modifyuser.component';
+import { DeleteComponent } from '../delete/delete.component';
 
 @Component({
   selector: 'app-user',
@@ -15,6 +19,18 @@ export class UserComponent implements OnInit {
   userSelected: User;
   totalUsers: number;
   pagination: number;
+
+  @ViewChild(CreateuserComponent)
+  public createUserModal: CreateuserComponent;
+
+  @ViewChild(CreaterestaurantComponent)
+  public createRestaurantModal: CreaterestaurantComponent;
+
+  @ViewChild(ModifyuserComponent)
+  public editEmployeeModal: ModifyuserComponent;
+
+  @ViewChild(DeleteComponent)
+  public deleteEmployeeModal: DeleteComponent;
 
   constructor(private userService: UserService,
               private searchService: SearchService) {
@@ -47,8 +63,13 @@ export class UserComponent implements OnInit {
   //   console.log('hola');
   // }
 
-  changeUserSelected(userSelected: User) {
+  openUserModal() {
+    this.createUserModal.openModal();
+  }
+
+  changeUserSelected(userSelected: User, modal: string) {
     this.userSelected = userSelected;
+    this[modal].openModal();
   }
 
   getUsersPaginate(page) {

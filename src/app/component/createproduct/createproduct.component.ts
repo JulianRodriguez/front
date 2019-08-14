@@ -13,7 +13,7 @@ export class CreateproductComponent implements OnInit {
 
   @Input()
   ProductTocreate: Restaurant;
-  public showModal = true;
+  public visible = false;
   public photo: string;
 
   constructor(private productService: ProductService,
@@ -29,8 +29,17 @@ export class CreateproductComponent implements OnInit {
     console.log(photo);
     this.productService.addproduct(name, description, photo, this.ProductTocreate).subscribe(restaurant => {
       console.log(this.ProductTocreate);
+      this.closeModal();
     });
 
+  }
+
+  openModal() {
+    this.visible = true;
+  }
+
+  closeModal() {
+    this.visible = false;
   }
 
   photoSelected(photo: string): void {

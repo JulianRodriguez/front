@@ -89,7 +89,7 @@
             <h2>Administración de <b>Usuarios</b></h2>
           </div>
           <div class="col-sm-6">
-            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+            <div (click)="openUserModal()" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></div>
           </div>
         </div>
       </div>
@@ -119,13 +119,9 @@
           <td *ngIf="user.idRole === 1">ADMIN</td>
           <td *ngIf="user.idRole === 2">USER</td>
           <td>
-            <a href="#addRestaurantModal" (click)="changeUserSelected(user)" class="create" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Crear Restaurante">restaurant</i></a>
-            <a href="#editEmployeeModal" (click)="changeUserSelected(user)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar Usuario">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" (click)="changeUserSelected(user)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar Usuario">&#xE872;</i></a>
-
-            <app-delete [userToDelete]="userSelected"></app-delete>
-            <app-createrestaurant *ngIf="userSelected" [RestaurantTocreate]="userSelected"></app-createrestaurant>
-            <app-modifyuser [userToModify]="userSelected"></app-modifyuser>
+            <span (click)="changeUserSelected(user, 'createRestaurantModal')" class="create"><i class="material-icons" data-toggle="tooltip" title="Crear Restaurante">restaurant</i></span>
+            <span  (click)="changeUserSelected(user, 'editEmployeeModal')" class="edit"><i class="material-icons" data-toggle="tooltip" title="Editar Usuario">&#xE254;</i></span>
+            <span  (click)="changeUserSelected(user, 'deleteEmployeeModal')" class="delete"><i class="material-icons" data-toggle="tooltip" title="Eliminar Usuario">&#xE872;</i></span>
             <!--<app-edit [userToEdit]="user"></app-edit>-->
           </td>
         </tr>
@@ -155,6 +151,9 @@
     </div>
   </div>
 <app-createuser></app-createuser>
+<app-delete [userToDelete]="userSelected"></app-delete>
+<app-createrestaurant [RestaurantTocreate]="userSelected"></app-createrestaurant>
+<app-modifyuser [userToModify]="userSelected"></app-modifyuser>
   <!-- Edit Modal HTML -->
 <!--<div id="addEmployeeModal" class="modal fade">-->
   <!--<div class="modal-dialog">-->

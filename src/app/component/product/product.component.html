@@ -74,7 +74,7 @@
           <td>
             <a href="{{ '#qrModal' + product.idProduct }}" data-toggle="modal"><i class="fa fa-qrcode" aria-hidden="true"></i></a>
             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" (click)="changeProductSelected(product)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <span (click)="changeProductSelected(product, 'deleteProductModal')" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></span>
             <!--<app-delete-r [RestaurantToDelete]="RestaurantSelected"></app-delete-r>-->
             <app-delete-p [ProductToDelete]="ProductSelected"></app-delete-p>
             <app-qr [productId]="product.idProduct"></app-qr>

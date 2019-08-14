@@ -1,26 +1,12 @@
-<script>
-  jQuery(document).ready(function(){
-
-    jQuery('#AvanzaModal').on('hidden.bs.modal', function (e) {
-      jQuery(this).removeData('bs.modal');
-      jQuery(this).find('.modal-content').empty();
-    })
-
-  })
-</script>
-<div id="addEmployeeModal" class="modal fade">
+<div class="custom-app-modal" *ngIf="visible">
   <div class="modal-dialog">
     <div class="modal-content">
       <form>
         <div class="modal-header">
           <h4 class="modal-title">Añadir Usuario</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
         </div>
         <div class="modal-body">
-          <!--<div class="form-group">-->
-          <!--<label>Nombre</label>-->
-          <!--<input type="text" class="form-control" #nombre required>-->
-          <!--</div>-->
           <div class="form-group">
             <label>Nombre*</label>
             <input title="Se necesita un nombre" type="text" class="form-control" required #name/>
@@ -55,9 +41,9 @@
           </div>
         </div>
         <div class="modal-footer">
-          <input type="submit" class="btn btn-default" data-dismiss="modal" value="Cancel">
+          <div class="btn btn-default" (click)="closeModal()">Cancel</div>
           <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
-          <input type="submit"  class="btn btn-success" value="Add" data-target="#AvanzaModal" (click)="adduser(username.value,password.value,role.value,name.value,phone.value,email.value)">
+          <input type="submit"  class="btn btn-success" value="Add" (click)="adduser(username.value,password.value,role.value,name.value,phone.value,email.value)">
         </div>
       </form>
     </div>

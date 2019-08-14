@@ -14,15 +14,26 @@ export class DeleteRComponent implements OnInit {
   @Input()
   RestaurantToDelete: Restaurant;
 
+  public visible = false;
+
   constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
+  }
+
+  openModal() {
+    this.visible = true;
+  }
+
+  closeModal() {
+    this.visible = false;
   }
 
   onDeleteRestaurant() {
     console.log(this.RestaurantToDelete);
     this.restaurantService.deleterestaurant(this.RestaurantToDelete).subscribe( entrada => {
       console.log("Eliminado: " + entrada);
+      this.closeModal();
     });
 
   }

@@ -12,15 +12,26 @@ export class DeleteComponent implements OnInit {
   @Input()
   userToDelete: User;
 
+  public visible = false;
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  openModal() {
+    this.visible = true;
+  }
+
+  closeModal() {
+    this.visible = false;
   }
 
   onDelete() {
     console.log(this.userToDelete);
      this.userService.deleteuser(this.userToDelete).subscribe( entrada => {
        console.log("Eliminado: " + entrada);
+       this.closeModal();
      });
 
   }

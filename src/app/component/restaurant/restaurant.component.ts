@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {Restaurant} from '../../model/restaurant.model';
 import {RestaurantService} from '../../service/restaurant.service';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/user.model';
 import {SearchService} from '../../service/search.service';
+import { CreateproductComponent } from '../createproduct/createproduct.component';
+import { DeletePComponent } from '../delete-p/delete-p.component';
+import { DeleteRComponent } from '../delete-r/delete-r.component';
 
 @Component({
   selector: 'app-restaurant',
@@ -14,6 +17,12 @@ export class RestaurantComponent implements OnInit {
 
   restaurants: Array<Restaurant>;
   RestaurantSelected: Restaurant;
+
+  @ViewChild(DeleteRComponent)
+  public deleteRestaurantModal: DeleteRComponent;
+
+  @ViewChild(CreateproductComponent)
+  public createProductModal: CreateproductComponent;
 
   constructor(private restaurantService: RestaurantService,
               private userService: UserService,
@@ -39,8 +48,9 @@ export class RestaurantComponent implements OnInit {
       });
     }
   }
-  changeRestaurantSelected(RestaurantSelected: Restaurant) {
+  changeRestaurantSelected(RestaurantSelected: Restaurant, modal: string) {
     this.RestaurantSelected = RestaurantSelected;
+    this[modal].openModal();
   }
 
   getRestaurantPaginate(page) {

@@ -7,6 +7,7 @@ import {RestaurantService} from '../../service/restaurant.service';
 import {User} from '../../model/user.model';
 import {SearchService} from '../../service/search.service';
 import { QRComponent } from '../qr/qr.component';
+import { DeletePComponent } from '../delete-p/delete-p.component';
 
 @Component({
   selector: 'app-product',
@@ -22,6 +23,9 @@ export class ProductComponent implements OnInit {
 
   @ViewChild('qrModal')
   qrModal: QRComponent;
+
+  @ViewChild(DeletePComponent)
+  public deleteProductModal: DeletePComponent;
 
   constructor(private productService: ProductService,
               private restaurantService: RestaurantService,
@@ -58,8 +62,9 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  changeProductSelected(ProductSelected: Product) {
+  changeProductSelected(ProductSelected: Product, modal: string) {
     this.ProductSelected = ProductSelected;
+    this[modal].openModal();
   }
 
   getProductsPaginate(page) {
