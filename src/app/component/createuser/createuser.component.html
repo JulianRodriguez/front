@@ -1,35 +1,40 @@
 <div class="custom-app-modal" *ngIf="visible">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="modal-header">
           <h4 class="modal-title">Añadir Usuario</h4>
           <button type="button" class="close" (click)="closeModal()">&times;</button>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label>Nombre*</label>
-            <input title="Se necesita un nombre" type="text" class="form-control" required #name/>
+            <label>Nombre</label>
+            <input formControlName="nombre" type="text" class="form-control" >
+            <span *ngIf="myForm.get('nombre').errors && myForm.get('nombre').touched" style="color:red">Ingrese un nombre válido</span>
           </div>
           <div class="form-group">
             <label>Teléfono</label>
-            <input type="text" class="form-control" #phone required>
+            <input formControlName="telefono" type="text" class="form-control" >
+            <span *ngIf="myForm.get('telefono').errors && myForm.get('telefono').touched" style="color:red">Ingrese un teléfono válido</span>
           </div>
           <div class="form-group">
             <label>Username</label>
-            <input type="text" class="form-control" #username required>
+            <input formControlName="username" type="text" class="form-control" >
+            <span *ngIf="myForm.get('username').errors && myForm.get('username').touched" style="color:red">Mínimo 6 caracteres</span>
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" #email required>
+            <input formControlName="email" class="form-control" >
+            <span *ngIf="myForm.get('email').errors && myForm.get('email').touched" style="color:red">Ingrese un email válido</span>
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="text" class="form-control" #password required>
+            <input formControlName="password" type="text" class="form-control" >
+            <span *ngIf="myForm.get('password').errors && myForm.get('password').touched" style="color:red">Mínimo 6 caracteres</span>
           </div>
           <div class="form-group">
             <label>role</label>
-            <select name="role" class="form-group" class="form-control" #role>
+            <select formControlName="role" class="form-group" class="form-control">
               <!-- Opciones de la lista -->
               <option value="0" class="form-control"></option>
               <option value="1" class="form-control">Admin</option>
@@ -43,7 +48,8 @@
         <div class="modal-footer">
           <div class="btn btn-default" (click)="closeModal()">Cancel</div>
           <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
-          <input type="submit"  class="btn btn-success" value="Add" (click)="adduser(username.value,password.value,role.value,name.value,phone.value,email.value)">
+          <button type="submit"  class="btn btn-success" [disabled]="myForm.invalid">Añadir</button>
+<!--          <button type="submit"  class="btn btn-success">Sign up</button>-->
         </div>
       </form>
     </div>

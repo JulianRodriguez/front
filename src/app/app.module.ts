@@ -35,6 +35,8 @@ import { ModifyuserComponent } from './component/modifyuser/modifyuser.component
 import { PhotoSelectorComponent } from './component/photo-selector/photo-selector';
 import { QRComponent } from './component/qr/qr.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -74,7 +76,10 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     BrowserAnimationsModule,
     NgxQRCodeModule,
     NgxPaginationModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [
