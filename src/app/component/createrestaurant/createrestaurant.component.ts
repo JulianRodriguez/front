@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {RestaurantService} from '../../service/restaurant.service';
 import {User} from '../../model/user.model';
 import {Restaurant} from '../../model/restaurant.model';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-createrestaurant',
@@ -12,16 +13,32 @@ import {Restaurant} from '../../model/restaurant.model';
 })
 export class CreaterestaurantComponent implements OnInit {
 
+  public myForm: FormGroup;
   @Input()
   RestaurantTocreate: User;
 
   public visible = false;
 
   constructor(private restaurantService: RestaurantService,
-              private router: Router) { }
+              private router: Router,
+              private fb: FormBuilder) { }
   ngOnInit() {
+    this.myForm = this.fb.group({
+      nombre: new FormControl('', [
+        Validators.required
+      ]),
+      descripcion: new FormControl('', [
+        Validators.required
+      ])
+    });
   }
 
+  onSubmit() {
+    event.preventDefault();
+    this.restaurantService.addrestaurant(this.myForm.get('nombre').value, this.myForm.get('descripcion').value, this.RestaurantTocreate).subscribe(restaurant => {
+      this.closeModal();
+    });
+  }
   openModal() {
     this.visible = true;
   }
@@ -30,11 +47,11 @@ export class CreaterestaurantComponent implements OnInit {
     this.visible = false;
   }
 
-  addrestaurant(name: string, description: string) {
+/*  addrestaurant(name: string, description: string) {
     event.preventDefault();
     this.restaurantService.addrestaurant(name, description, this.RestaurantTocreate).subscribe(restaurant => {
       this.closeModal();
     });
-  }
+  }*/
 
 }

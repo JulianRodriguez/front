@@ -1,7 +1,7 @@
 <div class="custom-app-modal" *ngIf="visible" xmlns="http://www.w3.org/1999/html">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="modal-header">
           <h4 class="modal-title">Añadir Restaurante</h4>
           <button type="button" class="close" (click)="closeModal()">&times;</button>
@@ -11,13 +11,23 @@
           <!--<label>Nombre</label>-->
           <!--<input type="text" class="form-control" #nombre required>-->
           <!--</div>-->
-          <div class="form-group">
+<!--          <div class="form-group">
             <label>Nombre del Restaurante</label>
             <input type="text" class="form-control" #name required>
-          </div>
+          </div>-->
           <div class="form-group">
+            <label>Nombre del Restaurante</label>
+            <input formControlName="nombre" type="text" class="form-control" >
+            <span *ngIf="myForm.get('nombre').errors && myForm.get('nombre').touched" style="color:red">Ingrese un nombre válido</span>
+          </div>
+<!--          <div class="form-group">
             <label>Descripción</label>
             <input type="text" class="form-control" #description required>
+          </div>-->
+          <div class="form-group">
+            <label>Descripción</label>
+            <input formControlName="descripcion" type="text" class="form-control" >
+            <span *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').touched" style="color:red">Ingrese una descripción válida</span>
           </div>
           <div class="form-group">
             <label>Añadido al usuario</label>
@@ -27,7 +37,8 @@
         <div class="modal-footer">
           <div class="btn btn-default" (click)="closeModal()">Cancel</div>
           <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
-          <input type="submit"  class="btn btn-success" value="Add" data-target="#AvanzaModal" (click)="addrestaurant(name.value, description.value)">
+          <!--<input type="submit"  class="btn btn-success" value="Add" data-target="#AvanzaModal" (click)="addrestaurant(name.value, description.value)">-->
+          <button type="submit"  class="btn btn-success" [disabled]="myForm.invalid">Añadir</button>
         </div>
       </form>
     </div>
