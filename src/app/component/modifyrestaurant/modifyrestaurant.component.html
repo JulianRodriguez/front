@@ -1,0 +1,40 @@
+<div class="custom-app-modal" *ngIf="visible" xmlns="http://www.w3.org/1999/html">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h4 class="modal-title">Modificar Restaurante</h4>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <!--<div class="form-group">-->
+          <!--<label>Nombre</label>-->
+          <!--<input type="text" class="form-control" #nombre required>-->
+          <!--</div>-->
+          <!--          <div class="form-group">
+                      <label>Nombre del Restaurante</label>
+                      <input type="text" class="form-control" #name required>
+                    </div>-->
+          <div class="form-group">
+            <label>Nombre del Restaurante</label>
+            <input formControlName="nombre" type="text" class="form-control" >
+          </div>
+          <!--          <div class="form-group">
+                      <label>Descripción</label>
+                      <input type="text" class="form-control" #description required>
+                    </div>-->
+          <div class="form-group">
+            <label>Descripción</label>
+            <input formControlName="descripcion" type="text" class="form-control" >
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="btn btn-default" (click)="closeModal()">Cancel</div>
+          <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
+          <!--<input type="submit"  class="btn btn-success" value="Add" data-target="#AvanzaModal" (click)="addrestaurant(name.value, description.value)">-->
+          <button type="submit"  class="btn btn-success">Editar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import {SearchService} from '../../service/search.service';
 import { CreateproductComponent } from '../createproduct/createproduct.component';
 import { DeletePComponent } from '../delete-p/delete-p.component';
 import { DeleteRComponent } from '../delete-r/delete-r.component';
+import {ModifyrestaurantComponent} from '../modifyrestaurant/modifyrestaurant.component';
 
 @Component({
   selector: 'app-restaurant',
@@ -20,6 +21,9 @@ export class RestaurantComponent implements OnInit {
 
   @ViewChild(DeleteRComponent)
   public deleteRestaurantModal: DeleteRComponent;
+
+  @ViewChild(ModifyrestaurantComponent)
+  public editRestaurantModal: ModifyrestaurantComponent;
 
   @ViewChild(CreateproductComponent)
   public createProductModal: CreateproductComponent;
@@ -50,6 +54,7 @@ export class RestaurantComponent implements OnInit {
   }
   changeRestaurantSelected(RestaurantSelected: Restaurant, modal: string) {
     this.RestaurantSelected = RestaurantSelected;
+    console.log(modal);
     this[modal].openModal();
   }
 

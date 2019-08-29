@@ -25,8 +25,10 @@ export class RestaurantService {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     });
-    this.options = { headers: headers,
-      withCredentials: true};
+    this.options = {
+      headers: headers,
+      withCredentials: true
+    };
   }
 
   setUserLoggedIn(user: User) {
@@ -42,7 +44,9 @@ export class RestaurantService {
   get(term: string, page?: number) {
 
     this.term = term;
-    if (!page) { page = 0; }
+    if (!page) {
+      page = 0;
+    }
 
     return this.http.get<Restaurant[]>(this.url + this.queryForSearch + term + this.queryForPage + page, this.options);
   }
@@ -62,19 +66,24 @@ export class RestaurantService {
 
   getByIdUserAndName(id: number, term: string, page?: number) {
     this.term = term;
-    if (!page) { page = 0; }
+    if (!page) {
+      page = 0;
+    }
     const urlFull = this.urlBase + 'user/' + id + '/restaurant' + this.queryForSearch + term;
 
     return this.http.get<Restaurant[]>(urlFull, this.options);
   }
+
   deleterestaurant(restaurant: Restaurant) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     });
 
-    this.options = { headers: headers, body: restaurant,
-      withCredentials: true};
+    this.options = {
+      headers: headers, body: restaurant,
+      withCredentials: true
+    };
 
     return this.http.delete<Restaurant>('http://localhost:8080/restaurant/' + restaurant.idRestaurant, this.options);
   }
@@ -85,8 +94,10 @@ export class RestaurantService {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     });
-    this.options = { headers: headers,
-      withCredentials: true};
+    this.options = {
+      headers: headers,
+      withCredentials: true
+    };
 
     return this.http.post<Restaurant>('http://localhost:8080/user/' + user.idUser + '/restaurant', {
       nameRestaurant: name,
@@ -98,4 +109,57 @@ export class RestaurantService {
     return this.http.get<number>('http://localhost:8080/restaurant/total', this.options);
   }
 
+  editUser(restaurant: Restaurant, nameRestaurant: string, descriptionRestaurant: string) {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      });
+      this.options = { headers: headers,
+        withCredentials: true};
+
+      if(nameRestaurant == '') {
+        nameRestaurant = null;
+      }
+      if(descriptionRestaurant == '') {
+        descriptionRestaurant = null;
+      }
+
+    return this.http.put<User>('http://localhost:8080/restaurant/' + restaurant.idRestaurant, {
+          nameRestaurant: nameRestaurant,
+          descriptionRestaurant: descriptionRestaurant,
+        }, this.options);
+
+  }
 }
+  //   console.log(user.idRole);
+  //   if (role == 0) {
+  //     role = user.idRole;
+  //   }
+  //   if (username == '') {
+  //     username = null;
+  //   }
+  //   if (phone == '') {
+  //     phone = null;
+  //   }
+  //   if (name == '') {
+  //     name = null;
+  //   }
+  //   if (password == '') {
+  //     password = null;
+  //   }
+  //   if (email == '') {
+  //     email = null;
+  //   }
+  //   console.log('El rol');
+  //   console.log(role);
+  //   return this.http.put<User>('http://localhost:8080/user/' + user.idUser, {
+  //     username: username,
+  //     password: password,
+  //     idRole: role,
+  //     name: name,
+  //     email: email,
+  //     phone: phone,
+  //   }, this.options);
+  // }
+
+

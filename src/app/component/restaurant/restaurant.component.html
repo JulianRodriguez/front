@@ -72,9 +72,9 @@
           <td>{{restaurant.descriptionRestaurant}}</td>
           <!--<td>{{(getUser(restaurant.idUser) | async)?.name}}</td>-->
           <td>
-            <span (click)="changeRestaurantSelected(restaurant, 'createProductModal')" class="create" ><i class="material-icons" data-toggle="tooltip" title="Crear Producto">fastfood</i></span>
-            <a href="#editEmployeeModal" (click)="changeRestaurantSelected(restaurant)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <span (click)="changeRestaurantSelected(restaurant, 'deleteRestaurantModal')" class="delete"><i class="material-icons" data-toggle="tooltip" title="Eliminar Restaurante">&#xE872;</i></span>
+            <span (click)="changeRestaurantSelected(restaurant, 'createProductModal')" class="create" ><i class="material-icons" style="color:mediumblue" data-toggle="tooltip" title="Crear Producto">fastfood</i></span>
+            <span (click)="changeRestaurantSelected(restaurant, 'editRestaurantModal')" class="edit" data-toggle="modal"><i class="material-icons" style="color:green" data-toggle="tooltip" title="Editar Restaurante">&#xE254;</i></span>
+            <span (click)="changeRestaurantSelected(restaurant, 'deleteRestaurantModal')" class="delete"><i class="material-icons" style="color:red" data-toggle="tooltip" title="Eliminar Restaurante">&#xE872;</i></span>
 
           </td>
         </tr>
@@ -107,6 +107,7 @@
 </div>
 <app-createproduct [ProductTocreate]="RestaurantSelected"></app-createproduct>
 <app-delete-r [RestaurantToDelete]="RestaurantSelected"></app-delete-r>
+<app-modifyrestaurant [RestaurantToEdit]="RestaurantSelected"></app-modifyrestaurant>
 </body>
 </html>
 
