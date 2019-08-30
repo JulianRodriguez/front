@@ -15,6 +15,11 @@ export class PhotoSelectorComponent {
 
   constructor() { }
 
+  setPhoto(photo: string) {
+    this.photo = photo;
+    console.log(this.photo);
+  }
+
   public photoLoaded(event: any): void {
     const reader: FileReader = new FileReader();
 

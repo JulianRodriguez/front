@@ -18,7 +18,6 @@ export class QRComponent implements OnInit {
 
   ngOnInit() {}
   public get qrCode() {
-    console.log(this.qrValue);
     return this.qrValue;
   }
 }

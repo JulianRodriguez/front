@@ -73,11 +73,13 @@
           <!--<td>{{(getUser(restaurant.idUser) | async)?.name}}</td>-->
           <td>
             <a href="{{ '#qrModal' + product.idProduct }}" data-toggle="modal"><i class="fa fa-qrcode" style="color:mediumblue" aria-hidden="true"></i></a>
-            <span  class="edit" data-toggle="modal"><i class="material-icons"  style="color:green" data-toggle="tooltip" title="Edit">&#xE254;</i></span>
-            <span (click)="changeProductSelected(product, 'deleteProductModal')" class="delete"><i class="material-icons" style="color:red" data-toggle="tooltip" title="Delete">&#xE872;</i></span>
-            <!--<app-delete-r [RestaurantToDelete]="RestaurantSelected"></app-delete-r>-->
-            <app-delete-p [ProductToDelete]="ProductSelected"></app-delete-p>
+            <span (click)="changeProductSelected(product, 'editProductModal','setProduct')" class="edit" data-toggle="modal"><i class="material-icons"  style="color:green" data-toggle="tooltip" title="Edit">&#xE254;</i></span>
+            <span (click)="changeProductSelected(product, 'deleteProductModal','deleteProduct')" class="delete"><i class="material-icons" style="color:red" data-toggle="tooltip" title="Delete">&#xE872;</i></span>
+
+            <app-delete-p [ProductToDelete]="ProductSelected"(ModalClose)="loadProduct()"></app-delete-p>
             <app-qr [productId]="product.idProduct"></app-qr>
+            <app-modifyproduct [ProductToEdit]="ProductSelected"></app-modifyproduct>
+
           </td>
         </tr>
         </tbody>

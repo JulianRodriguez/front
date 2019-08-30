@@ -8,6 +8,7 @@ import {User} from '../../model/user.model';
 import {SearchService} from '../../service/search.service';
 import { QRComponent } from '../qr/qr.component';
 import { DeletePComponent } from '../delete-p/delete-p.component';
+import {ModifyproductComponent} from '../modifyproduct/modifyproduct.component';
 
 @Component({
   selector: 'app-product',
@@ -23,9 +24,10 @@ export class ProductComponent implements OnInit {
 
   @ViewChild('qrModal')
   qrModal: QRComponent;
-
   @ViewChild(DeletePComponent)
   public deleteProductModal: DeletePComponent;
+  @ViewChild(ModifyproductComponent)
+  public editProductModal: ModifyproductComponent;
 
   constructor(private productService: ProductService,
               private restaurantService: RestaurantService,
@@ -33,6 +35,37 @@ export class ProductComponent implements OnInit {
               private searchService: SearchService) { }
 
   ngOnInit() {
+    this.loadProduct();
+  //
+  //   this.searchService.changed.subscribe(() => {
+  //     console.log('Pero aquí no');
+  //     console.log(this.searchService.productos);
+  //     this.products = this.searchService.productos;
+  //   });
+  //
+  //   this.productService.getTotal().subscribe( total => {
+  //     this.totalProducts = total as unknown as number;
+  //     this.pagination = Math.ceil(this.totalProducts / 10);
+  //   })
+  //
+  //   const user = this.userService.getUserLoggedIn();
+  //   if (user.rolename === 'ADMIN') {
+  //     this.productService.getAll(0).subscribe(products => {
+  //       this.products = products as unknown as Array<Product>;
+  //     });
+  //   } else {
+  //     this.restaurantService.getByIdUser(user.idUser).subscribe((restaurants) => {
+  //       this.products = new Array<Product>();
+  //       for (const restaurant of restaurants as unknown as Array<Restaurant>) {
+  //         this.productService.getByIdRestaurant(restaurant.idRestaurant).subscribe(products => {
+  //           this.products = this.products.concat(products as unknown as Array<Product>);
+  //         });
+  //       }
+  //     });
+  //   }
+  }
+
+  loadProduct() {
 
     this.searchService.changed.subscribe(() => {
       console.log('Pero aquí no');
@@ -62,8 +95,11 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  changeProductSelected(ProductSelected: Product, modal: string) {
+
+  changeProductSelected(ProductSelected: Product, modal: string, funcion: string) {
     this.ProductSelected = ProductSelected;
+    console.log(modal);
+    this[modal][funcion](ProductSelected);
     this[modal].openModal();
   }
 

@@ -38,6 +38,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ModifyrestaurantComponent } from './component/modifyrestaurant/modifyrestaurant.component';
+import {ModifyproductComponent} from './component/modifyproduct/modifyproduct.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { ModifyrestaurantComponent } from './component/modifyrestaurant/modifyre
     ModifyuserComponent,
     PhotoSelectorComponent,
     QRComponent,
-    ModifyrestaurantComponent
+    ModifyrestaurantComponent,
+    ModifyproductComponent
   ],
   imports: [
     BrowserModule,
