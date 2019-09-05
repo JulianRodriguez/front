@@ -81,8 +81,9 @@ export class UserService {
     }, this.options);
   }
 
-  modifyuser(user: User, username: string, password: string, role: number, name: string, phone: string, email: string) {
+  modifyuser(user: User, username: string, role: number, name: string, phone: string, email: string) {
 
+    console.log('HOLA');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
@@ -103,9 +104,6 @@ export class UserService {
     if (name == '') {
       name = null;
     }
-    if (password == '') {
-      password = null;
-    }
     if (email == '') {
       email = null;
     }
@@ -113,7 +111,6 @@ export class UserService {
     console.log(role);
     return this.http.put<User>('http://localhost:8080/user/' + user.idUser, {
       username: username,
-      password: password,
       idRole: role,
       name: name,
       email: email,

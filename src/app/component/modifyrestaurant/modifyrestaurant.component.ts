@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../model/user.model';
 import {RestaurantService} from '../../service/restaurant.service';
@@ -15,6 +15,8 @@ export class ModifyrestaurantComponent implements OnInit {
   public myForm: FormGroup;
   @Input()
   RestaurantToEdit: Restaurant;
+  @Output()
+  ModalClose = new EventEmitter();
 
   public visible = false;
 
@@ -35,6 +37,7 @@ export class ModifyrestaurantComponent implements OnInit {
   onSubmit() {
     event.preventDefault();
     this.restaurantService.editUser(this.RestaurantToEdit, this.myForm.get('nombre').value, this.myForm.get('descripcion').value).subscribe(restaurant => {
+      this.ModalClose.emit();
       this.closeModal();
     });
   }
@@ -46,6 +49,10 @@ export class ModifyrestaurantComponent implements OnInit {
     this.visible = false;
   }
 
+  setRestaurant(restaurant: Restaurant) {
+    this.RestaurantToEdit = restaurant;
+    this.myForm.setValue({nombre : restaurant.nameRestaurant, descripcion: restaurant.descriptionRestaurant});
+  }
 
   /*  addrestaurant(name: string, description: string) {
       event.preventDefault();

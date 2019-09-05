@@ -1,7 +1,7 @@
 <div class="custom-app-modal" *ngIf="visible">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="modal-header">
           <h4 class="modal-title">Editar Usuario</h4>
           <button type="button" class="close" (click)="closeModal()">&times;</button>
@@ -13,27 +13,27 @@
           <!--</div>-->
           <div class="form-group">
             <label>Nombre</label>
-            <input title="Se necesita un nombre" type="text" class="form-control" required #name/>
+            <input formControlName="nombre" type="text" class="form-control" >
           </div>
           <div class="form-group">
             <label>Teléfono</label>
-            <input type="text" class="form-control" #phone required>
+            <input formControlName="telefono" type="text" class="form-control" >
           </div>
           <div class="form-group">
             <label>Username</label>
-            <input type="text" class="form-control" #username required>
+            <input formControlName="username" type="text" class="form-control" >
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" #email required>
+            <input formControlName="email" class="form-control" >
           </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="text" class="form-control" #password required>
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label>Password</label>-->
+<!--            <input formControlName="password" type="text" class="form-control" >-->
+<!--          </div>-->
           <div class="form-group">
             <label>role</label>
-            <select name="role" class="form-group" class="form-control" #role>
+            <select formControlName="role" class="form-group" class="form-control">
               <!-- Opciones de la lista -->
               <option value="0" class="form-control"></option>
               <option value="1" class="form-control">Admin</option>
@@ -47,7 +47,8 @@
         <div class="modal-footer">
           <div class="btn btn-default" (click)="closeModal()">Cancel</div>
           <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
-          <input type="submit"  class="btn btn-success" value="Editar" data-target="#AvanzaModal" (click)="modifyuser(username.value,password.value,role.value,name.value,phone.value,email.value)">
+<!--          <input type="submit"  class="btn btn-success" value="Editar" data-target="#AvanzaModal" (click)="modifyuser(username.value,password.value,role.value,name.value,phone.value,email.value)">-->
+          <button type="submit"  class="btn btn-success">Editar</button>
         </div>
       </form>
     </div>

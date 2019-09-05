@@ -33,7 +33,27 @@ export class RestaurantComponent implements OnInit {
               private searchService: SearchService) { }
 
   ngOnInit() {
+    this.loadRestaurant();
+    // this.searchService.changed.subscribe(() => {
+    //   console.log('Pero aquí no Restaurante');
+    //   console.log(this.searchService.restaurantes);
+    //   this.restaurants = this.searchService.restaurantes;
+    // });
+    //
+    // const user = this.userService.getUserLoggedIn();
+    //
+    // if (user.rolename === 'ADMIN') {
+    //   this.restaurantService.getAll(0).subscribe(restaurants => {
+    //     this.restaurants = restaurants as unknown as Array<Restaurant>;
+    //   });
+    // } else {
+    //   this.restaurantService.getByIdUser(user.idUser).subscribe(restaurants => {
+    //     this.restaurants = restaurants as unknown as Array<Restaurant>;
+    //   });
+    // }
+  }
 
+  loadRestaurant() {
     this.searchService.changed.subscribe(() => {
       console.log('Pero aquí no Restaurante');
       console.log(this.searchService.restaurantes);
@@ -52,9 +72,10 @@ export class RestaurantComponent implements OnInit {
       });
     }
   }
-  changeRestaurantSelected(RestaurantSelected: Restaurant, modal: string) {
+  changeRestaurantSelected(RestaurantSelected: Restaurant, modal: string, funcion: string) {
     this.RestaurantSelected = RestaurantSelected;
     console.log(modal);
+    this[modal][funcion](RestaurantSelected);
     this[modal].openModal();
   }
 

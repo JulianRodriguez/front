@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {Router} from '@angular/router';
 import {User} from '../../model/user.model';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-modifyuser',
@@ -11,12 +12,40 @@ import {User} from '../../model/user.model';
 export class ModifyuserComponent implements OnInit {
 
   public visible = false;
-
+  public myForm: FormGroup;
   @Input()
-  userToModify: User;
+  userToEdit: User;
+  @Output()
+  ModalClose = new EventEmitter();
+
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router,
+              private fb: FormBuilder) { }
   ngOnInit() {
+    this.myForm = this.fb.group({
+      nombre: new FormControl('', [
+        Validators.required
+      ]),
+      telefono: new FormControl('', [
+        Validators.required
+      ]),
+      username: new FormControl('', [
+        Validators.required
+      ]),
+      email: new FormControl('', [
+        Validators.required
+      ]),
+      role: new FormControl('', [
+        Validators.required
+      ])
+    });
+  }
+  onSubmit() {
+    event.preventDefault();
+    this.userService.modifyuser(this.userToEdit, this.myForm.get('username').value, this.myForm.get('role').value, this.myForm.get('nombre').value, this.myForm.get('telefono').value, this.myForm.get('email').value).subscribe(user => {
+      this.ModalClose.emit();
+      this.closeModal();
+    });
   }
 
   openModal() {
@@ -27,11 +56,18 @@ export class ModifyuserComponent implements OnInit {
     this.visible = false;
   }
 
-  modifyuser(username: string, password: string, role: number, name: string, phone: string, email: string ) {
-    console.log(this.userToModify);
-    event.preventDefault();
-    this.userService.modifyuser(this.userToModify, username, password, role, name, phone, email).subscribe(user => {
-      this.closeModal();
-    });
+  setUser(user: User) {
+    this.userToEdit = user;
+    this.myForm.setValue({nombre : user.name, telefono: user.phone, username: user.username, email: user.email, role: user.idRole});
+    // this.myForm.setValue({password: user.password, role: user.idRole});
   }
+
+  // modifyuser(username: string, password: string, role: number, name: string, phone: string, email: string ) {
+  //   console.log(this.userToEdit);
+  //   event.preventDefault();
+  //   this.userService.modifyuser(this.userToEdit, username, password, role, name, phone, email).subscribe(user => {
+  //     this.ModalClose.emit();
+  //     this.closeModal();
+  //   });
+  // }
 }

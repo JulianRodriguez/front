@@ -5,8 +5,9 @@ export class User {
   name: string;
   email: string;
   phone: string;
-  idRole: number;
   password: string;
+  idRole: number;
+
 
   // constructor(idUser, username, name, email, phone, idRole) {
   //   this.idRole = idRole;

@@ -99,7 +99,7 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Nombre</th>
-          <th scope="col">Alias</th>
+          <th scope="col">Username</th>
           <th scope="col">Email</th>
           <th scope="col">Teléfono</th>
           <th scope="col">Rol</th>
@@ -120,8 +120,8 @@
           <td *ngIf="user.idRole === 2">USER</td>
           <td>
             <span (click)="changeUserSelected(user, 'createRestaurantModal')" class="create"><i class="material-icons" style="color:mediumblue" data-toggle="tooltip" title="Crear Restaurante">restaurant</i></span>
-            <span  (click)="changeUserSelected(user, 'editEmployeeModal')" class="edit"><i class="material-icons" style="color:green" data-toggle="tooltip" title="Editar Usuario">&#xE254;</i></span>
-            <span  (click)="changeUserSelected(user, 'deleteEmployeeModal')" class="delete"><i class="material-icons" style="color:red" data-toggle="tooltip" title="Eliminar Usuario">&#xE872;</i></span>
+            <span  (click)="changeUserSelected(user, 'editEmployeeModal', 'setUser')" class="edit"><i class="material-icons" style="color:green" data-toggle="tooltip" title="Editar Usuario">&#xE254;</i></span>
+            <span  (click)="changeUserSelected(user, 'deleteEmployeeModal', 'deleteUser')" class="delete"><i class="material-icons" style="color:red" data-toggle="tooltip" title="Eliminar Usuario">&#xE872;</i></span>
             <!--<app-edit [userToEdit]="user"></app-edit>-->
           </td>
         </tr>
@@ -151,9 +151,9 @@
     </div>
   </div>
 <app-createuser></app-createuser>
-<app-delete [userToDelete]="userSelected"></app-delete>
+<app-delete [userToDelete]="userSelected" (ModalClose)="loadUser()"></app-delete>
 <app-createrestaurant [RestaurantTocreate]="userSelected"></app-createrestaurant>
-<app-modifyuser [userToModify]="userSelected"></app-modifyuser>
+<app-modifyuser [userToEdit]="userSelected" (ModalClose)="loadUser()"></app-modifyuser>
   <!-- Edit Modal HTML -->
 <!--<div id="addEmployeeModal" class="modal fade">-->
   <!--<div class="modal-dialog">-->

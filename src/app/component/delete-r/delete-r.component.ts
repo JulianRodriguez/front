@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../model/user.model';
 // import {UserService} from '../../service/user.service';
 import {Restaurant} from '../../model/restaurant.model';
@@ -13,6 +13,8 @@ export class DeleteRComponent implements OnInit {
 
   @Input()
   RestaurantToDelete: Restaurant;
+  @Output()
+  ModalClose = new EventEmitter();
 
   public visible = false;
 
@@ -29,9 +31,14 @@ export class DeleteRComponent implements OnInit {
     this.visible = false;
   }
 
+  deleteRestaurant(restaurant: Restaurant) {
+    this.RestaurantToDelete = restaurant;
+  }
+
   onDeleteRestaurant() {
     console.log(this.RestaurantToDelete);
     this.restaurantService.deleterestaurant(this.RestaurantToDelete).subscribe( entrada => {
+      this.ModalClose.emit();
       console.log("Eliminado: " + entrada);
       this.closeModal();
     });
