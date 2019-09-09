@@ -220,6 +220,6 @@ table.table .avatar {
 .modal form label {
   font-weight: normal;
 }
-.edit, .delete{
+.edit, .delete, .create{
   cursor: pointer;
 }

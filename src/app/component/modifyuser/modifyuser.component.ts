@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {Router} from '@angular/router';
 import {User} from '../../model/user.model';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-modifyuser',
@@ -11,6 +11,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class ModifyuserComponent implements OnInit {
 
+  public valido = true;
   public visible = false;
   public myForm: FormGroup;
   @Input()
@@ -24,7 +25,7 @@ export class ModifyuserComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.fb.group({
       nombre: new FormControl('', [
-        Validators.required
+        Validators.required,
       ]),
       telefono: new FormControl('', [
         Validators.required
@@ -45,8 +46,23 @@ export class ModifyuserComponent implements OnInit {
     this.userService.modifyuser(this.userToEdit, this.myForm.get('username').value, this.myForm.get('role').value, this.myForm.get('nombre').value, this.myForm.get('telefono').value, this.myForm.get('email').value).subscribe(user => {
       this.ModalClose.emit();
       this.closeModal();
+    }, error => {
+      console.log(this.valido);
+      this.valido = false;
+      console.log('Hola valido');
+      console.log(this.valido);
+      console.log('Hola error ' + error);
     });
   }
+
+  // private validateEmailNotTaken(ctrl: AbstractControl) {
+  //   const nombre = ctrl.value;
+  //   this.userService.checkUser(nombre).subscribe(total => {
+  //     console.log(nombre);
+  //   });
+  //   // console.log(error);
+  //   return null;
+  // }
 
   openModal() {
     this.visible = true;

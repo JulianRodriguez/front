@@ -105,11 +105,6 @@ export class SearchService {
           });
           return this.productService.get(term) as unknown as Observable<Array<Product>>;
         }
-
-
-
-
-
       }
     }
   }

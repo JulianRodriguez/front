@@ -49,6 +49,10 @@
   text-indent: -99999px;
 }
 
+.nav-link {
+  cursor: pointer;
+}
+
 /*@import url('https://fonts.googleapis.com/css?family=Lato:300,400');*/
 
 /*html, body {*/

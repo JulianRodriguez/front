@@ -57,6 +57,9 @@ export class CreateproductComponent implements OnInit {
   closeModal() {
     this.visible = false;
   }
+  createProduct(restaurant: Restaurant) {
+    this.ProductTocreate = restaurant;
+  }
 
   photoSelected(photo: string): void {
     this.photo = photo;

@@ -81,6 +81,17 @@ export class UserService {
     }, this.options);
   }
 
+  checkUser(nombre: string) {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
+    return this.http.get<boolean>('http://localhost:8080/user/check?username=' + nombre);
+  }
+
   modifyuser(user: User, username: string, role: number, name: string, phone: string, email: string) {
 
     console.log('HOLA');
