@@ -38,6 +38,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ModifyrestaurantComponent } from './component/modifyrestaurant/modifyrestaurant.component';
 import {ModifyproductComponent} from './component/modifyproduct/modifyproduct.component';
+import { AccountComponent } from './component/account/account.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import {ModifyproductComponent} from './component/modifyproduct/modifyproduct.co
     PhotoSelectorComponent,
     QRComponent,
     ModifyrestaurantComponent,
-    ModifyproductComponent
+    ModifyproductComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

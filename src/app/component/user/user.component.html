@@ -117,7 +117,8 @@
           <td>{{user.email}}</td>
           <td>{{user.phone}}</td>
           <td *ngIf="user.idRole === 1">ADMIN</td>
-          <td *ngIf="user.idRole === 2">USER</td>
+          <td *ngIf="user.idRole === 2">RESTAURANT</td>
+          <td *ngIf="user.idRole === 3">USER</td>
           <td>
             <span (click)="changeUserSelected(user, 'createRestaurantModal')" class="create"><i class="material-icons" style="color:mediumblue" data-toggle="tooltip" title="Crear Restaurante">restaurant</i></span>
             <span  (click)="changeUserSelected(user, 'editEmployeeModal', 'setUser')" class="edit"><i class="material-icons" style="color:green" data-toggle="tooltip" title="Editar Usuario">&#xE254;</i></span>

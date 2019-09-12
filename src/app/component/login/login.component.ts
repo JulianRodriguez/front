@@ -31,11 +31,15 @@ export class LoginComponent implements OnInit {
         // const u: User = {username: username, rolename: res.rolename};
         const role = u.rolename;
         this.userService.setUserLoggedIn(u);
+        console.log(u.rolename);
         if (role === 'ADMIN') {
           this.router.navigate(['/user']);
         } else if (role === 'RESTAURANT') {
-                this.router.navigate(['/restaurant']);
-              }
+          this.router.navigate(['/restaurant']);
+        }
+              // } else if (role === 'USER') {
+              //     this.router.navigate(['/restaurant']);
+              // }
       },
       error => {
         console.error(error);

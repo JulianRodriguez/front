@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+          // Activate tooltip
+          $('[data-toggle="tooltip"]').tooltip();
+
+          // Select/Deselect checkboxes
+          var checkbox = $('table tbody input[type="checkbox"]');
+          $("#selectAll").click(function(){
+              if(this.checked){
+                  checkbox.each(function(){
+                      this.checked = true;
+                  });
+              } else{
+                  checkbox.each(function(){
+                      this.checked = false;
+                  });
+              }
+          });
+          checkbox.click(function(){
+              if(!this.checked){
+                  $("#selectAll").prop("checked", false);
+              }
+          });
+      });
+  </script>
+</head>
+<body>
+<app-main-nav></app-main-nav>
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Cuenta de <b>Usuario</b></h2>
+        </div>
+      </div>
+    </div>
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="modal-body">
+              <!--<div class="form-group">-->
+              <!--<label>Nombre</label>-->
+              <!--<input type="text" class="form-control" #nombre required>-->
+              <!--</div>-->
+              <div class="form-group">
+                <label>Nombre</label>
+                <input formControlName="nombre" type="text" class="form-control" >
+              </div>
+              <div class="form-group">
+                <label>Teléfono</label>
+                <input formControlName="telefono" type="text" class="form-control" >
+              </div>
+              <div class="form-group">
+                <label>Username</label>
+                <input formControlName="username" type="text" class="form-control" >
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input formControlName="email" class="form-control" >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="btn btn-default" >Cancel</div>
+              <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
+              <!--          <input type="submit"  class="btn btn-success" value="Editar" data-target="#AvanzaModal" (click)="modifyuser(username.value,password.value,role.value,name.value,phone.value,email.value)">-->
+              <button type="submit"  class="btn btn-success">Editar</button>
+            </div>
+          </form>
+    <div class="clearfix">
+
+    </div>
+  </div>
+</div>
+<app-createuser></app-createuser>
+</body>
+</html>

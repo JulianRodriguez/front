@@ -11,16 +11,20 @@
         <li class="nav-item" *ngIf="getRole() === 'ADMIN'">
           <a class="nav-link scroll-link" href="http://localhost:4200/user">Usuarios</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="getRole() === 'ADMIN' || getRole() === 'RESTAURANT'">
           <a class="nav-link scroll-link" href="http://localhost:4200/restaurant">Restaurantes</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="getRole() === 'ADMIN' || getRole() === 'RESTAURANT'">
           <a class="nav-link scroll-link" href="http://localhost:4200/product">Productos</a>
         </li>
-        <li class="nav-item">
-<!--          <a class="nav-link scroll-link" href="http://localhost:4200/login">Log out</a>-->
-          <span class="nav-link scroll-link" (click)="logout()">Salir</span>
+        <li class="nav-item" *ngIf="getRole() === 'ADMIN' || getRole() === 'RESTAURANT'">
+<!--          <a class="nav-link scroll-link material-icons" style="color:blue" href="http://localhost:4200/account">person</a>-->
+          <span class="nav-link scroll-link material-icons" style="color:red" (click)="logout()">exit_to_app</span>
         </li>
+<!--        <li class="nav-item">
+&lt;!&ndash;          <a class="nav-link scroll-link" href="http://localhost:4200/login">Log out</a>&ndash;&gt;
+          <span class="nav-link scroll-link" (click)="logout()">Salir</span>
+        </li>-->
       </ul>
     </div>
   </div>
