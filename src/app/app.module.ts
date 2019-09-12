@@ -27,7 +27,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { PaginateRComponent } from './component/paginate-r/paginate-r.component';
 import { PaginatePComponent } from './component/paginate-p/paginate-p.component';
 import {SearchService} from './service/search.service';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './component/search/search.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ModifyuserComponent } from './component/modifyuser/modifyuser.component';
@@ -39,6 +39,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ModifyrestaurantComponent } from './component/modifyrestaurant/modifyrestaurant.component';
 import {ModifyproductComponent} from './component/modifyproduct/modifyproduct.component';
 import { AccountComponent } from './component/account/account.component';
+import { PasswordComponent } from './component/password/password.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { AccountComponent } from './component/account/account.component';
     QRComponent,
     ModifyrestaurantComponent,
     ModifyproductComponent,
-    AccountComponent
+    AccountComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,

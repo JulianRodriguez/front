@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {Router} from '@angular/router';
 import {RestaurantService} from '../../service/restaurant.service';
@@ -16,6 +16,8 @@ export class CreaterestaurantComponent implements OnInit {
   public myForm: FormGroup;
   @Input()
   RestaurantTocreate: User;
+  @Output()
+  ModalClose = new EventEmitter();
 
   public visible = false;
 
@@ -45,6 +47,10 @@ export class CreaterestaurantComponent implements OnInit {
 
   closeModal() {
     this.visible = false;
+  }
+
+  createRestaurant(user: User) {
+    this.RestaurantTocreate = user;
   }
 
 /*  addrestaurant(name: string, description: string) {

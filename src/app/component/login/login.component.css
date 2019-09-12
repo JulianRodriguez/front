@@ -308,6 +308,10 @@ input[type=password] {
 
 .underlineHover:hover:after{
   width: 100%;
+
+}
+.underlineHover {
+  cursor: pointer;
 }
 
 
@@ -321,4 +325,5 @@ input[type=password] {
 #icon {
   width:60%;
 }
+
 

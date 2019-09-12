@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../model/user.model';
-import {UserService} from '../service/user.service';
-import {SearchService} from '../service/search.service';
+import {User} from '../../model/user.model';
+import {UserService} from '../../service/user.service';
+import {SearchService} from '../../service/search.service';
 import {Observable, Subject} from 'rxjs';
 
 @Component({

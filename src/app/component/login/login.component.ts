@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import {LoginService} from '../../service/login.service';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/user.model';
 import {Connected} from '../../model/connected.model';
+import {PasswordComponent} from '../password/password.component';
 
 
 @Component({
@@ -12,6 +13,9 @@ import {Connected} from '../../model/connected.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  @ViewChild(PasswordComponent)
+  public editPasswordModal: PasswordComponent;
 
   constructor(private loginService: LoginService, private router: Router, private userService: UserService) { }
 
@@ -53,6 +57,11 @@ export class LoginComponent implements OnInit {
   navigate() {
     console.log('final');
     this.router.navigate(['/admin']);
+  }
+
+  changePassword(modal: string) {
+    console.log('Estoy en changePassword');
+    this[modal].openModal();
   }
 }
 

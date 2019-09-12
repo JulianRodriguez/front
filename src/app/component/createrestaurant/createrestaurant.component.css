@@ -190,7 +190,13 @@ table.table .avatar {
 .modal .modal-dialog {
   max-width: 400px;
 }
-.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+.modal-header {
+  padding: 20px 30px;
+  background: #435d7d;
+  color: #fff;
+}
+
+.modal .modal-body, .modal .modal-footer {
   padding: 20px 30px;
 }
 .modal .modal-content {
