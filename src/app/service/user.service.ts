@@ -129,6 +129,16 @@ export class UserService {
     }, this.options);
   }
 
+  check(type: string, value: string) {
+    console.log('El type es: ');
+  console.log(type);
+  console.log('El value es: ');
+  console.log(value);
+    // return this.http.get<boolean>('http://localhost:8080/user/' + type !== 'username' ? 'check_user' : 'check_email' + '?value=' + value);
+    return this.http.get<boolean>('http://localhost:8080/user/check_user?value=' + value);
+
+  }
+
   getUser(id: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

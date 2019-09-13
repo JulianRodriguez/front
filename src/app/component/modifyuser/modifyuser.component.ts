@@ -3,6 +3,7 @@ import {UserService} from '../../service/user.service';
 import {Router} from '@angular/router';
 import {User} from '../../model/user.model';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {delay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-modifyuser',
@@ -11,6 +12,7 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '
 })
 export class ModifyuserComponent implements OnInit {
 
+  public userExists = false;
   public valido = true;
   public visible = false;
   public myForm: FormGroup;
@@ -31,14 +33,26 @@ export class ModifyuserComponent implements OnInit {
         Validators.required
       ]),
       username: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(6),
       ]),
       email: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.email
       ]),
       role: new FormControl('', [
         Validators.required
       ])
+    });
+
+    this.myForm.get('username').valueChanges.subscribe(value => {
+      console.log(value);
+      this.userExists = false;
+      this.userService.check('username', value ).subscribe( exists => {
+        if (exists) {
+          this.userExists = true;
+        }
+      });
     });
   }
   onSubmit() {

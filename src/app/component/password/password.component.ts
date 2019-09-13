@@ -23,10 +23,12 @@ export class PasswordComponent implements OnInit {
 
     this.myForm = this.fb.group({
       email: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.email
       ]),
       username: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(6)
       ]),
       password1: new FormControl('', [
         Validators.required

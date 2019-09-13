@@ -55,6 +55,16 @@
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .search-icons{
+    display: none;
+  }
+}
+
+.search-icons{
+  margin-right: 10px;
+}
+
 /*@import url('https://fonts.googleapis.com/css?family=Lato:300,400');*/
 
 /*html, body {*/
