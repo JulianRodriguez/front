@@ -10,6 +10,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class PasswordComponent implements OnInit {
 
+  public emailExists = false;
   public visible = false;
   public myForm: FormGroup;
   @Output()
@@ -25,18 +26,17 @@ export class PasswordComponent implements OnInit {
       email: new FormControl('', [
         Validators.required,
         Validators.email
-      ]),
-      username: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6)
-      ]),
-      password1: new FormControl('', [
-        Validators.required
-      ]),
-      password2: new FormControl('', [
-        Validators.required
       ])
     });
+    // this.myForm.get('email').valueChanges.subscribe(value => {
+    //   console.log(value);
+    //   this.emailExists = false;
+    //   this.userService.checkEmail(value).subscribe( exists => {
+    //     if (exists) {
+    //       this.emailExists = true;
+    //     }
+    //   });
+    // });
   }
   onSubmit() {
   }

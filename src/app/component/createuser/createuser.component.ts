@@ -10,6 +10,8 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '
 })
 export class CreateuserComponent implements OnInit {
 
+  public emailExists = false;
+  public userExists = false;
   public myForm: FormGroup;
   public visible = false;
 
@@ -39,6 +41,25 @@ export class CreateuserComponent implements OnInit {
       role: new FormControl('', [
         Validators.required
       ])
+    });
+    this.myForm.get('username').valueChanges.subscribe(value => {
+      console.log(value);
+      this.userExists = false;
+        this.userService.checkUser(value).subscribe(exists => {
+          if (exists) {
+            this.userExists = true;
+          }
+        });
+    });
+    this.myForm.get('email').valueChanges.subscribe(value => {
+      console.log(value);
+      this.emailExists = false;
+        console.log('No igual');
+        this.userService.checkEmail(value).subscribe(exists => {
+          if (exists) {
+            this.emailExists = true;
+          }
+        });
     });
   }
 

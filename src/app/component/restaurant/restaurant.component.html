@@ -68,8 +68,8 @@
         <tbody>
         <tr *ngFor="let restaurant of restaurants; index as i">
           <th scope="row">{{i+1}}</th>
-          <td>{{restaurant.nameRestaurant}}</td>
-          <td>{{restaurant.descriptionRestaurant}}</td>
+          <td class="ellipsis">{{restaurant.nameRestaurant}}</td>
+          <td (click)="changeRestaurantSelected(restaurant, 'descriptionModal','descriptionRestaurant')" class="ellipsis">{{restaurant.descriptionRestaurant}}</td>
           <!--<td>{{(getUser(restaurant.idUser) | async)?.name}}</td>-->
           <td>
             <span (click)="changeRestaurantSelected(restaurant, 'createProductModal','createProduct')" class="create" ><i class="material-icons" style="color:mediumblue" data-toggle="tooltip" title="Crear Producto">fastfood</i></span>
@@ -82,17 +82,7 @@
       </table>
     </div>
     <div class="clearfix">
-      <!--<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>-->
       <ul class="pagination">
-        <!--<li class="page-item disabled"><a href="#">Previous</a></li>-->
-        <!--<li class="page-item"><a href="#" class="page-link">1</a></li>-->
-        <!--<li class="page-item"><a href="#" class="page-link">2</a></li>-->
-        <!--<li class="page-item active"><a href="#" class="page-link">3</a></li>-->
-        <!--<li class="page-item"><a href="#" class="page-link">4</a></li>-->
-        <!--<li class="page-item"><a href="#" class="page-link">5</a></li>-->
-        <!--<li class="page-item"><a href="#" class="page-link">Next</a></li>-->
-      <!--</ul>-->
-    <!--</div>-->
         <li class="page-item">
           <app-paginate-r (restaurantPage)="getRestaurantPaginate($event)"></app-paginate-r>
         </li>
@@ -108,6 +98,7 @@
 <app-createproduct [ProductTocreate]="RestaurantSelected"></app-createproduct>
 <app-delete-r [RestaurantToDelete]="RestaurantSelected" (ModalClose)="loadRestaurant()"></app-delete-r>
 <app-modifyrestaurant [RestaurantToEdit]="RestaurantSelected" (ModalClose)="loadRestaurant()"></app-modifyrestaurant>
+<app-descripcion-restaurant [DescriptionRestaurant]="RestaurantSelected"></app-descripcion-restaurant>
 </body>
 </html>
 

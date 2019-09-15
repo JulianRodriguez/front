@@ -229,3 +229,11 @@ table.table .avatar {
   cursor: pointer;
 
 }
+
+.usernameDuplicate{
+  border-top: 50000px;
+}
+
+.container{
+  max-width: 80%;
+}

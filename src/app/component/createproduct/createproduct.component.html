@@ -17,7 +17,7 @@
           </div>-->
           <div class="form-group">
             <label>Nombre del Producto</label>
-            <input formControlName="nombre" type="text" class="form-control" >
+            <input placeholder="Introduce un nombre para el producto..." formControlName="nombre" type="text" class="form-control" >
             <span *ngIf="myForm.get('nombre').errors && myForm.get('nombre').touched" style="color:red">Ingrese un nombre válido</span>
           </div>
 <!--          <div class="form-group">
@@ -26,7 +26,7 @@
           </div>-->
           <div class="form-group">
             <label>Descripción</label>
-            <input formControlName="descripcion" type="text" class="form-control" >
+            <textarea placeholder="Introduce descripción..." formControlName="descripcion" type="text" class="form-control" ></textarea>
             <span *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').touched" style="color:red">Ingrese una descripción válida</span>
           </div>
           <div class="form-group">

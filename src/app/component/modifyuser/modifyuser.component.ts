@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {User} from '../../model/user.model';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {delay} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-modifyuser',
@@ -12,6 +13,7 @@ import {delay} from 'rxjs/operators';
 })
 export class ModifyuserComponent implements OnInit {
 
+  public emailExists = false;
   public userExists = false;
   public valido = true;
   public visible = false;
@@ -48,11 +50,26 @@ export class ModifyuserComponent implements OnInit {
     this.myForm.get('username').valueChanges.subscribe(value => {
       console.log(value);
       this.userExists = false;
-      this.userService.check('username', value ).subscribe( exists => {
-        if (exists) {
-          this.userExists = true;
-        }
-      });
+      if (this.userToEdit.username !== value) {
+        this.userService.checkUser(value).subscribe(exists => {
+          if (exists) {
+            this.userExists = true;
+          }
+        });
+      }
+    });
+    this.myForm.get('email').valueChanges.subscribe(value => {
+      console.log(value);
+      console.log(this.userToEdit.email)
+      this.emailExists = false;
+      if (this.userToEdit.email !== value) {
+        console.log('No igual');
+        this.userService.checkEmail(value).subscribe(exists => {
+          if (exists) {
+            this.emailExists = true;
+          }
+        });
+      }
     });
   }
   onSubmit() {

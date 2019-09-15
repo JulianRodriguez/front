@@ -223,3 +223,7 @@ table.table .avatar {
 .edit, .delete, .create{
   cursor: pointer;
 }
+
+.container{
+  max-width: 80%;
+}

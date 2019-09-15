@@ -8,28 +8,30 @@
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label>Nombre</label>
-            <input formControlName="nombre" type="text" class="form-control" >
+            <label>Nombre completo</label>
+            <input placeholder="Introduce nombre con los apellidos..." formControlName="nombre" type="text" class="form-control" >
             <span *ngIf="myForm.get('nombre').errors && myForm.get('nombre').touched" style="color:red">Ingrese un nombre válido</span>
           </div>
           <div class="form-group">
             <label>Teléfono</label>
-            <input formControlName="telefono" type="text" class="form-control" >
-            <span *ngIf="myForm.get('telefono').errors && myForm.get('telefono').touched" style="color:red">Ingrese un teléfono válido</span>
+            <input placeholder="Introduce telefono de contacto..." formControlName="telefono" type="text" class="form-control" >
+            <span  *ngIf="myForm.get('telefono').errors && myForm.get('telefono').touched" style="color:red">Ingrese un teléfono válido</span>
           </div>
           <div class="form-group">
             <label>Username</label>
-            <input formControlName="username" type="text" class="form-control" >
+            <input placeholder="Introduce alias..." formControlName="username" type="text" class="form-control" >
             <span *ngIf="myForm.get('username').errors && myForm.get('username').touched" style="color:red">Mínimo 6 caracteres</span>
+            <span *ngIf="userExists " style="color:red">Username no disponible</span>
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input formControlName="email" class="form-control" >
+            <input placeholder="Introduce email..." formControlName="email" class="form-control" >
             <span *ngIf="myForm.get('email').errors && myForm.get('email').touched" style="color:red">Ingrese un email válido</span>
+            <span *ngIf="emailExists " style="color:red">Email no disponible</span>
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input formControlName="password" type="text" class="form-control" >
+            <input placeholder="Introduce contraseña..." formControlName="password" type="text" class="form-control" >
             <span *ngIf="myForm.get('password').errors && myForm.get('password').touched" style="color:red">Mínimo 6 caracteres</span>
           </div>
           <div class="form-group">
@@ -48,7 +50,7 @@
         <div class="modal-footer">
           <div class="btn btn-default" (click)="closeModal()">Cancel</div>
           <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
-          <button type="submit"  class="btn btn-success" [disabled]="myForm.invalid">Añadir</button>
+          <button type="submit"  class="btn btn-success" [disabled]="myForm.invalid || userExists || emailExists">Añadir</button>
 <!--          <button type="submit"  class="btn btn-success">Sign up</button>-->
         </div>
       </form>

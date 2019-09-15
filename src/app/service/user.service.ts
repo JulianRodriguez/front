@@ -81,17 +81,6 @@ export class UserService {
     }, this.options);
   }
 
-  checkUser(nombre: string) {
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    });
-    this.options = { headers: headers,
-      withCredentials: true};
-    return this.http.get<boolean>('http://localhost:8080/user/check?username=' + nombre);
-  }
-
   modifyuser(user: User, username: string, role: number, name: string, phone: string, email: string) {
 
     console.log('HOLA');
@@ -129,13 +118,15 @@ export class UserService {
     }, this.options);
   }
 
-  check(type: string, value: string) {
-    console.log('El type es: ');
-  console.log(type);
-  console.log('El value es: ');
-  console.log(value);
-    // return this.http.get<boolean>('http://localhost:8080/user/' + type !== 'username' ? 'check_user' : 'check_email' + '?value=' + value);
+  checkUser(value: string) {
     return this.http.get<boolean>('http://localhost:8080/user/check_user?value=' + value);
+
+  }
+
+  checkEmail(value: string) {
+    console.log('Estamos en checkEmail');
+    console.log(value);
+    return this.http.get<boolean>('http://localhost:8080/user/check_email?value=' + value);
 
   }
 

@@ -40,6 +40,7 @@ import { ModifyrestaurantComponent } from './component/modifyrestaurant/modifyre
 import {ModifyproductComponent} from './component/modifyproduct/modifyproduct.component';
 import { AccountComponent } from './component/account/account.component';
 import { PasswordComponent } from './component/password/password.component';
+import { DescripcionRestaurantComponent } from './component/descripcion-restaurant/descripcion-restaurant.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { PasswordComponent } from './component/password/password.component';
     ModifyrestaurantComponent,
     ModifyproductComponent,
     AccountComponent,
-    PasswordComponent
+    PasswordComponent,
+    DescripcionRestaurantComponent
   ],
   imports: [
     BrowserModule,
