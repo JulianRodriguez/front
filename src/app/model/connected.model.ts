@@ -3,4 +3,7 @@ export class Connected {
   username: string;
   password: string;
   rolename: string;
+  name: string;
+  email: string;
+  phone: string;
 }

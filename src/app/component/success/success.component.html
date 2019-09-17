@@ -1,0 +1,22 @@
+<body>
+<div class="custom-app-modal" *ngIf="visible">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h4 class="modal-title">Modificar contraseña</h4>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estás seguro de cambiar la contraseña?</p>
+          <p class="text-warning"><small>Se te deslogueara para introducir la nueva contraseña.</small></p>
+        </div>
+        <div class="modal-footer">
+          <div class="btn btn-default" (click)="closeModal()">Cancel</div>
+          <input type="submit" class="btn btn-danger" data-target="#AvanzaModal" value="Aceptar" (click)="changePass()">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>

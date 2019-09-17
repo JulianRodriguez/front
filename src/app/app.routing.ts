@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   // { path: 'user', component: UserComponent},
   { path: 'restaurant', component: RestaurantComponent, canActivate: [AuthGuard] },
   { path: 'product', component: ProductComponent, canActivate: [AuthGuard] },
-  // { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
+  { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' }
 ];
 

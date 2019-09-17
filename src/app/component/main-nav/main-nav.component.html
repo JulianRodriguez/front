@@ -21,7 +21,7 @@
           <a class="nav-link scroll-link" href="http://localhost:4200/product">Productos</a>
         </li>
         <li class="nav-item" *ngIf="getRole() === 'ADMIN' || getRole() === 'RESTAURANT'">
-<!--          <a class="nav-link scroll-link material-icons" style="color:blue" href="http://localhost:4200/account">person</a>-->
+          <a class="nav-link scroll-link material-icons" style="color:blue" href="http://localhost:4200/account">person</a>
           <span class="nav-link scroll-link material-icons" style="color:red" (click)="logout()">exit_to_app</span>
         </li>
 <!--        <li class="nav-item">

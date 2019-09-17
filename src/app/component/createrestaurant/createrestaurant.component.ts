@@ -16,6 +16,8 @@ export class CreaterestaurantComponent implements OnInit {
   public myForm: FormGroup;
   @Input()
   RestaurantTocreate: User;
+  @Input()
+  counter: number = 0;
   @Output()
   ModalClose = new EventEmitter();
 
@@ -34,7 +36,9 @@ export class CreaterestaurantComponent implements OnInit {
       ])
     });
   }
-
+  onInput(value: string) {
+    this.counter = value.length;
+  }
   onSubmit() {
     event.preventDefault();
     this.restaurantService.addrestaurant(this.myForm.get('nombre').value, this.myForm.get('descripcion').value, this.RestaurantTocreate).subscribe(restaurant => {

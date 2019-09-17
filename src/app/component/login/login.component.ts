@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       (res: Connected) => {
         // const u: User = {idUser: res.idUser, username: username, rolename: res.rolename};
         // const u: User = {idUser: res.idUser, username: username, rolename: res.rolename};
-        const u: Connected = {idUser: res.idUser, username, rolename: res.rolename, password};
+        const u: Connected = {idUser: res.idUser, username, rolename: res.rolename, password, name: res.name, email: res.email, phone: res.phone};
 
         // const u: User = {username: username, rolename: res.rolename};
         const role = u.rolename;

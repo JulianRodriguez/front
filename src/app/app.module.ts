@@ -41,6 +41,7 @@ import {ModifyproductComponent} from './component/modifyproduct/modifyproduct.co
 import { AccountComponent } from './component/account/account.component';
 import { PasswordComponent } from './component/password/password.component';
 import { DescripcionRestaurantComponent } from './component/descripcion-restaurant/descripcion-restaurant.component';
+import { SuccessComponent } from './component/success/success.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { DescripcionRestaurantComponent } from './component/descripcion-restaura
     ModifyproductComponent,
     AccountComponent,
     PasswordComponent,
-    DescripcionRestaurantComponent
+    DescripcionRestaurantComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

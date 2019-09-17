@@ -26,8 +26,12 @@
           </div>-->
           <div class="form-group">
             <label>Descripción</label>
-            <textarea placeholder="Introduce descripción..." maxlength="250" formControlName="descripcion" type="text" class="form-control" ></textarea>
+            <textarea (input)="onInput($event.target.value)" placeholder="Introduce descripción..." maxlength="250" formControlName="descripcion" type="text" class="form-control" ></textarea>
+            <span>Número de letras: {{counter}}</span>
+            <span class="letras">Max: 250</span>
+            <br/>
             <span *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').touched" style="color:red">Ingrese una descripción</span>
+
           </div>
           <div class="form-group">
             <label>Añadido al usuario</label>
