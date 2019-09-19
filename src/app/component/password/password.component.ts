@@ -12,6 +12,7 @@ export class PasswordComponent implements OnInit {
 
   public emailExists = false;
   public visible = false;
+  public valido = false;
   public myForm: FormGroup;
   @Output()
   ModalClose = new EventEmitter();
@@ -28,17 +29,18 @@ export class PasswordComponent implements OnInit {
         Validators.email
       ])
     });
-    // this.myForm.get('email').valueChanges.subscribe(value => {
-    //   console.log(value);
-    //   this.emailExists = false;
-    //   this.userService.checkEmail(value).subscribe( exists => {
-    //     if (exists) {
-    //       this.emailExists = true;
-    //     }
-    //   });
-    // });
   }
   onSubmit() {
+    event.preventDefault();
+    this.userService.generatePass(this.myForm.get('email').value).subscribe(valido => {
+      this.valido = true;
+      this.ModalClose.emit();
+      this.closeModal();
+    }, error => {
+      console.log('error');
+      this.valido = false;
+    });
+
   }
 
   openModal() {

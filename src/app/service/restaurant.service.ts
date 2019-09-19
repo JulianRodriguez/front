@@ -42,6 +42,12 @@ export class RestaurantService {
   }
 
   get(term: string, page?: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
 
     this.term = term;
     if (!page) {
@@ -52,6 +58,12 @@ export class RestaurantService {
   }
 
   getAll(page: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
     let url = this.url;
     if (page) {
       url += '?page=' + page;

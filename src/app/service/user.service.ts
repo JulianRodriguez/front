@@ -40,6 +40,12 @@ export class UserService {
   }
 
   getAll(page: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
 
     if (!this.term) {
       let url = this.url;
@@ -53,6 +59,12 @@ export class UserService {
   }
 
   get(term: string, page?: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
 
     this.term = term;
     if (!page) { page = 0; }
@@ -118,19 +130,54 @@ export class UserService {
     }, this.options);
   }
 
+
+  generatePass(email: string) {
+
+    console.log(email);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
+    return this.http.put<Boolean>('http://localhost:8080/email/cambio',  {
+      email: email,
+    }, this.options);
+  }
+
   checkUser(value: string) {
-    return this.http.get<boolean>('http://localhost:8080/user/check_user?value=' + value);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
+    return this.http.get<boolean>('http://localhost:8080/user/check_user?value=' + value, this.options);
 
   }
   checkPass(email: string, password: string) {
-    return this.http.get<boolean>('http://localhost:8080/user/check_pass?email=' + email + '&pass=' + password);
+    console.log(email);
+    console.log(password);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
+    return this.http.get<boolean>('http://localhost:8080/user/check_pass?email=' + email + '&pass=' + password, this.options);
   }
 
 
   checkEmail(value: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
     console.log('Estamos en checkEmail');
     console.log(value);
-    return this.http.get<boolean>('http://localhost:8080/user/check_email?value=' + value);
+    return this.http.get<boolean>('http://localhost:8080/user/check_email?value=' + value, this.options);
 
   }
   changePass(idUser: number, password: string) {
@@ -149,16 +196,16 @@ export class UserService {
   }
 
   getUser(id: number) {
-    // const headers = new HttpHeaders({
-    //   'Content-Type': 'application/json',
-    //   'Access-Control-Allow-Origin': '*'
-    // });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
 
-    // this.options = { headers: headers,
-    //   withCredentials: true};
+    this.options = { headers: headers,
+      withCredentials: true};
 
     // return this.http.get<User>('http://localhost:8080/user/' + id, this.options);
-    return this.http.get<User>('http://localhost:8080/user/' + id);
+    return this.http.get<User>('http://localhost:8080/user/' + id, this.options);
   }
 
   deleteuser(user: User) {
