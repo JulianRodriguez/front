@@ -227,3 +227,15 @@ table.table .avatar {
 .container{
   max-width: 80%;
 }
+
+.ellipsis {
+  max-width: 2px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+
+/*.color-restaurant{*/
+/*  background: #cccccc;*/
+/*}*/

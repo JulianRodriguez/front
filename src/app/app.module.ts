@@ -42,6 +42,7 @@ import { AccountComponent } from './component/account/account.component';
 import { PasswordComponent } from './component/password/password.component';
 import { DescripcionRestaurantComponent } from './component/descripcion-restaurant/descripcion-restaurant.component';
 import { SuccessComponent } from './component/success/success.component';
+import { DescripcionProductoComponent } from './component/descripcion-producto/descripcion-producto.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { SuccessComponent } from './component/success/success.component';
     AccountComponent,
     PasswordComponent,
     DescripcionRestaurantComponent,
-    SuccessComponent
+    SuccessComponent,
+    DescripcionProductoComponent
   ],
   imports: [
     BrowserModule,

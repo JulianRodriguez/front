@@ -15,6 +15,8 @@ export class CreateproductComponent implements OnInit {
   public myForm: FormGroup;
   @Input()
   ProductTocreate: Restaurant;
+  @Input()
+  counter: number = 0;
   public visible = false;
   public photo: string;
 
@@ -48,6 +50,10 @@ export class CreateproductComponent implements OnInit {
       this.closeModal();
     });
 
+  }
+
+  onInput(value: string) {
+    this.counter = value.length;
   }
 
   openModal() {

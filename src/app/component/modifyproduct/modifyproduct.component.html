@@ -1,4 +1,4 @@
-<div *ngIf="visible" class="custom-app-modal" xmlns="http://www.w3.org/1999/html">
+<div  class="custom-app-modal" *ngIf="visible" xmlns="http://www.w3.org/1999/html">
   <div class="modal-dialog">
     <div class="modal-content">
       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
@@ -7,25 +7,13 @@
           <button type="button" class="close" (click)="closeModal()">&times;</button>
         </div>
         <div class="modal-body">
-          <!--<div class="form-group">-->
-          <!--<label>Nombre</label>-->
-          <!--<input type="text" class="form-control" #nombre required>-->
-          <!--</div>-->
-          <!--          <div class="form-group">
-                      <label>Nombre del Producto</label>
-                      <input type="text" class="form-control" #name required>
-                    </div>-->
           <div class="form-group">
             <label>Nombre del Producto</label>
-            <input formControlName="nombre" type="text" class="form-control" >
+            <input maxlength="30" formControlName="nombre" type="text" class="form-control" >
           </div>
-          <!--          <div class="form-group">
-                      <label>Descripción</label>
-                      <input type="text" class="form-control" #description required>
-                    </div>-->
           <div class="form-group">
             <label>Descripción</label>
-            <input formControlName="descripcion" type="text" class="form-control" >
+            <textarea maxlength="250" formControlName="descripcion" type="text" class="form-control" ></textarea>
           </div>
           <app-photo-selector (photoSelected)="photoSelected($event)"></app-photo-selector>
         </div>
@@ -33,7 +21,7 @@
           <div class="btn btn-default" (click)="closeModal()">Cancel</div>
           <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
           <!--          <input type="submit"  class="btn btn-success" value="Add" data-target="#AvanzaModal" (click)="addproduct(name.value, description.value, photo)">-->
-          <button type="submit"  class="btn btn-success" >Añadir</button>
+          <button type="submit"  class="btn btn-success" >Editar</button>
         </div>
       </form>
     </div>

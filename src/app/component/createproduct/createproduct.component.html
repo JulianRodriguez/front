@@ -25,9 +25,16 @@
             <input type="text" class="form-control" #description required>
           </div>-->
           <div class="form-group">
+<!--            <label>Descripción</label>-->
+<!--            <textarea placeholder="Introduce descripción..." formControlName="descripcion" type="text" class="form-control" ></textarea>-->
+<!--            <span *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').touched" style="color:red">Ingrese una descripción válida</span>-->
+
             <label>Descripción</label>
-            <textarea placeholder="Introduce descripción..." formControlName="descripcion" type="text" class="form-control" ></textarea>
-            <span *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').touched" style="color:red">Ingrese una descripción válida</span>
+            <textarea (input)="onInput($event.target.value)" placeholder="Introduce descripción..." maxlength="250" formControlName="descripcion" type="text" class="form-control" ></textarea>
+            <span>Número de letras: {{counter}}</span>
+            <span class="letras">Max: 250</span>
+            <br/>
+            <span *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').touched" style="color:red">Ingrese una descripción</span>
           </div>
           <div class="form-group">
             <label>Añadido al Restaurante</label>

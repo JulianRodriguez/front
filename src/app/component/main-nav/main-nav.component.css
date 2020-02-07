@@ -11,6 +11,10 @@
   position: relative;
 }
 
+.navbar-collapse{
+  margin-left: auto;
+}
+
 .navbar.navbar-no-bg {
   background: #444;
   background: rgba(0, 0, 0, 0.2);
@@ -62,9 +66,9 @@
 }
 
 .search-icons{
-  margin-right: 10px;
+  margin-right: 1px;
 }
 
 .container{
-  max-width: 80%;
+  /*max-width: 80%;*/
 }

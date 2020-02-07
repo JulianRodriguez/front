@@ -14,6 +14,7 @@ export class ProductService {
   private queryForSearch = '?searchName=';
   private queryForPage = '&page=';
   public term;
+  public photo: null;
 
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = false;
@@ -90,4 +91,31 @@ export class ProductService {
   getTotal() {
     return this.http.get<number>('http://localhost:8080/product/total', this.options);
   }
+
+  editProd(product: Product, name: string, description: string) {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.options = { headers: headers,
+      withCredentials: true};
+
+    if (name == '') {
+      name = null;
+    }
+    if (description == '') {
+      description = null;
+    }
+    this.photo = null;
+    console.log(name);
+    console.log(description);
+    return this.http.put<Product>('http://localhost:8080/product/' + product.idProduct, {
+      name: name,
+      description: description,
+      photo: this.photo,
+    }, this.options);
+
+  }
+
 }

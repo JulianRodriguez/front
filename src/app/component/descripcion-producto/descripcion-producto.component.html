@@ -1,0 +1,24 @@
+<div class="custom-app-modal" *ngIf="visible" xmlns="http://www.w3.org/1999/html">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h4 class="modal-title">Descripción del Producto</h4>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Descripción</label>
+            <textarea rows="4" cols="50" type="text" class="form-control" readonly>{{DescriptionProducto.description}}</textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="btn btn-default" (click)="closeModal()">Cancel</div>
+          <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
+          <!--<input type="submit"  class="btn btn-success" value="Add" data-target="#AvanzaModal" (click)="addrestaurant(name.value, description.value)">-->
+          <button type="submit"  class="btn btn-success" (click)="closeModal()">Aceptar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

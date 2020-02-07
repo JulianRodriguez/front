@@ -60,7 +60,7 @@
           <th scope="col">ID</th>
           <th scope="col">Nombre</th>
           <th scope="col">Descripción</th>
-          <!--<th scope="col">Dueño</th>-->
+<!--          <th scope="col">Restaurante</th>-->
           <th scope="col">Acción</th>
           <!--<th scope="col">Información</th>-->
         </tr>
@@ -68,18 +68,19 @@
         <tbody>
         <tr *ngFor="let product of products; index as i">
           <th scope="row">{{i+1}}</th>
-          <td>{{product.name}}</td>
-          <td>{{product.description}}</td>
+          <td class="ellipsis">{{product.name}}</td>
+          <td (click)="changeProductSelected(product,'descriptionProdModal','descriptionProducto')" class="ellipsis">{{product.description}}</td>
+<!--          <td class="color-restaurant"> {{product.nameRestaurant}}</td>-->
           <!--<td>{{(getUser(restaurant.idUser) | async)?.name}}</td>-->
           <td>
             <a href="{{ '#qrModal' + product.idProduct }}" data-toggle="modal"><i class="fa fa-qrcode" style="color:mediumblue" aria-hidden="true"></i></a>
             <span (click)="changeProductSelected(product, 'editProductModal','setProduct')" class="edit" data-toggle="modal"><i class="material-icons"  style="color:green" data-toggle="tooltip" title="Edit">&#xE254;</i></span>
             <span (click)="changeProductSelected(product, 'deleteProductModal','deleteProduct')" class="delete"><i class="material-icons" style="color:red" data-toggle="tooltip" title="Delete">&#xE872;</i></span>
 
-            <app-delete-p [ProductToDelete]="ProductSelected"(ModalClose)="loadProduct()"></app-delete-p>
+            <app-delete-p [ProductToDelete]="ProductSelected" (ModalClose)="loadProduct()"></app-delete-p>
             <app-qr [productId]="product.idProduct"></app-qr>
-            <app-modifyproduct [ProductToEdit]="ProductSelected"></app-modifyproduct>
-
+            <app-modifyproduct [ProductToEdit]="ProductSelected" (ModalClose)="loadProduct()"></app-modifyproduct>
+            <app-descripcion-producto [DescriptionProducto]="ProductSelected"></app-descripcion-producto>
           </td>
         </tr>
         </tbody>

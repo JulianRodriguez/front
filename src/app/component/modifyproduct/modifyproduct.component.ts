@@ -41,11 +41,14 @@ export class ModifyproductComponent implements OnInit {
   }
 
   onSubmit() {
-    // event.preventDefault();
-    // this.productService.addproduct(this.myForm.get('nombre').value, this.myForm.get('descripcion').value, this.photo, this.ProductTocreate).subscribe(restaurant => {
-    //   console.log(this.ProductTocreate);
-    //   this.closeModal();
-    // });
+    event.preventDefault();
+     this.productService.editProd(this.ProductToEdit,
+       this.myForm.get('nombre').value, this.myForm.get('descripcion').value).subscribe(product => {
+      this.ModalClose.emit();
+      console.log('Antes del close');
+      this.closeModal();
+       console.log('Despues del close');
+    });
   }
 
   setProduct(producto: Product) {
@@ -58,7 +61,7 @@ export class ModifyproductComponent implements OnInit {
     this.visible = true;
     setTimeout(() => {
       this.photoSelector.setPhoto(this.ProductToEdit.photo);
-    },500);
+    }, 500);
 
   }
 

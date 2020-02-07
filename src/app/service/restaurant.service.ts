@@ -129,10 +129,10 @@ export class RestaurantService {
       this.options = { headers: headers,
         withCredentials: true};
 
-      if(nameRestaurant == '') {
+      if (nameRestaurant == '') {
         nameRestaurant = null;
       }
-      if(descriptionRestaurant == '') {
+      if (descriptionRestaurant == '') {
         descriptionRestaurant = null;
       }
 

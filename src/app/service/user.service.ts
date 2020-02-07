@@ -152,7 +152,7 @@ export class UserService {
     });
     this.options = { headers: headers,
       withCredentials: true};
-    return this.http.get<boolean>('http://localhost:8080/user/check_user?value=' + value, this.options);
+    return this.http.get<boolean>('http://localhost:8080/check_user?value=' + value, this.options);
 
   }
   checkPass(email: string, password: string) {
@@ -164,7 +164,7 @@ export class UserService {
     });
     this.options = { headers: headers,
       withCredentials: true};
-    return this.http.get<boolean>('http://localhost:8080/user/check_pass?email=' + email + '&pass=' + password, this.options);
+    return this.http.get<boolean>('http://localhost:8080/check_pass?email=' + email + '&pass=' + password, this.options);
   }
 
 
@@ -177,7 +177,7 @@ export class UserService {
       withCredentials: true};
     console.log('Estamos en checkEmail');
     console.log(value);
-    return this.http.get<boolean>('http://localhost:8080/user/check_email?value=' + value, this.options);
+    return this.http.get<boolean>('http://localhost:8080/check_email?value=' + value, this.options);
 
   }
   changePass(idUser: number, password: string) {

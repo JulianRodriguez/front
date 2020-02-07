@@ -9,6 +9,7 @@ import {SearchService} from '../../service/search.service';
 import { QRComponent } from '../qr/qr.component';
 import { DeletePComponent } from '../delete-p/delete-p.component';
 import {ModifyproductComponent} from '../modifyproduct/modifyproduct.component';
+import {DescripcionProductoComponent} from '../descripcion-producto/descripcion-producto.component';
 
 @Component({
   selector: 'app-product',
@@ -28,6 +29,8 @@ export class ProductComponent implements OnInit {
   public deleteProductModal: DeletePComponent;
   @ViewChild(ModifyproductComponent)
   public editProductModal: ModifyproductComponent;
+  @ViewChild(DescripcionProductoComponent)
+  public descriptionProdModal: DescripcionProductoComponent;
 
   constructor(private productService: ProductService,
               private restaurantService: RestaurantService,
@@ -99,6 +102,7 @@ export class ProductComponent implements OnInit {
   changeProductSelected(ProductSelected: Product, modal: string, funcion: string) {
     this.ProductSelected = ProductSelected;
     console.log(modal);
+    console.log(funcion);
     this[modal][funcion](ProductSelected);
     this[modal].openModal();
   }

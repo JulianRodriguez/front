@@ -38,7 +38,9 @@ export class ModifyrestaurantComponent implements OnInit {
     event.preventDefault();
     this.restaurantService.editUser(this.RestaurantToEdit, this.myForm.get('nombre').value, this.myForm.get('descripcion').value).subscribe(restaurant => {
       this.ModalClose.emit();
+      console.log('Antes del close');
       this.closeModal();
+      console.log('Despues del close');
     });
   }
   openModal() {
