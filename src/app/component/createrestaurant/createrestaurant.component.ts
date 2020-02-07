@@ -18,6 +18,8 @@ export class CreaterestaurantComponent implements OnInit {
   RestaurantTocreate: User;
   @Input()
   counter: number = 0;
+  @Input()
+  counterName: number = 0;
   @Output()
   ModalClose = new EventEmitter();
 
@@ -38,6 +40,9 @@ export class CreaterestaurantComponent implements OnInit {
   }
   onInput(value: string) {
     this.counter = value.length;
+  }
+  onInputName(value: string) {
+    this.counterName = value.length;
   }
   onSubmit() {
     event.preventDefault();

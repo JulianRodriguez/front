@@ -17,8 +17,10 @@
           </div>-->
           <div class="form-group">
             <label>Nombre del Producto</label>
-            <input placeholder="Introduce un nombre para el producto..." formControlName="nombre" type="text" class="form-control" >
+            <input (input)="onInputName($event.target.value)" placeholder="Introduce un nombre para el producto..." maxlength="30" formControlName="nombre" type="text" class="form-control" >
             <span *ngIf="myForm.get('nombre').errors && myForm.get('nombre').touched" style="color:red">Ingrese un nombre válido</span>
+            <span>Número de letras: {{counterName}}</span>
+            <span class="letras">Max: 30</span>
           </div>
 <!--          <div class="form-group">
             <label>Descripción</label>

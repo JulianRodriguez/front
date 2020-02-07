@@ -17,6 +17,8 @@ export class CreateproductComponent implements OnInit {
   ProductTocreate: Restaurant;
   @Input()
   counter: number = 0;
+  @Input()
+  counterName: number = 0;
   public visible = false;
   public photo: string;
 
@@ -54,6 +56,9 @@ export class CreateproductComponent implements OnInit {
 
   onInput(value: string) {
     this.counter = value.length;
+  }
+  onInputName(value: string) {
+    this.counterName = value.length;
   }
 
   openModal() {
