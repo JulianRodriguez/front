@@ -239,3 +239,6 @@ table.table .avatar {
   background: rgba(0,0,0,.2);
 }
 
+.letras {
+  float: right;
+}

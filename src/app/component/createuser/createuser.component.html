@@ -9,36 +9,38 @@
         <div class="modal-body">
           <div class="form-group">
             <label>Nombre completo</label>
-            <input placeholder="Introduce nombre con los apellidos..." formControlName="nombre" type="text" class="form-control" >
-            <span *ngIf="myForm.get('nombre').errors && myForm.get('nombre').touched" style="color:red">Ingrese un nombre válido</span>
+            <input maxlength="40" placeholder="Introduce nombre con los apellidos..." formControlName="nombre" type="text" class="form-control" >
+            <span *ngIf="myForm.get('nombre').hasError('required')" style="color:red">Ingrese un nombre</span>
+<!--            <span *ngIf="myForm.get('nombre').hasError('maxLength') && myForm.get('nombre').touched" style="color:red">Superado el límite</span>-->
           </div>
           <div class="form-group">
             <label>Teléfono</label>
             <input placeholder="Introduce telefono de contacto..." formControlName="telefono" type="text" class="form-control" >
-            <span  *ngIf="myForm.get('telefono').errors && myForm.get('telefono').touched" style="color:red">Ingrese un teléfono válido</span>
+            <span  *ngIf="myForm.get('telefono').hasError('required')" style="color:red">Ingrese un teléfono</span>
+            <span  *ngIf="myForm.get('telefono').hasError('pattern') && myForm.get('telefono').touched" style="color:red">Ingrese solo números</span>
           </div>
           <div class="form-group">
             <label>Username</label>
             <input placeholder="Introduce alias..." formControlName="username" type="text" class="form-control" >
-            <span *ngIf="myForm.get('username').errors && myForm.get('username').touched" style="color:red">Mínimo 6 caracteres</span>
+            <span *ngIf="myForm.get('username').errors" style="color:red">Mínimo 6 caracteres</span>
             <span *ngIf="userExists " style="color:red">Username no disponible</span>
           </div>
           <div class="form-group">
             <label>Email</label>
             <input placeholder="Introduce email..." formControlName="email" class="form-control" >
-            <span *ngIf="myForm.get('email').errors && myForm.get('email').touched" style="color:red">Ingrese un email válido</span>
+            <span *ngIf="myForm.get('email').errors" style="color:red">Ingrese un email</span>
             <span *ngIf="emailExists " style="color:red">Email no disponible</span>
           </div>
           <div class="form-group">
             <label>Password</label>
             <input placeholder="Introduce contraseña..." formControlName="password" type="text" class="form-control" >
-            <span *ngIf="myForm.get('password').errors && myForm.get('password').touched" style="color:red">Mínimo 6 caracteres</span>
+            <span *ngIf="myForm.get('password').errors" style="color:red">Mínimo 6 caracteres</span>
           </div>
           <div class="form-group">
             <label>role</label>
             <select formControlName="role" class="form-group" class="form-control">
               <!-- Opciones de la lista -->
-              <option value="0" class="form-control"></option>
+<!--              <option value="0" class="form-control"></option>-->
               <option value="1" class="form-control">Admin</option>
               <option value="2" class="form-control">Restaurante</option>
               <option value="3" class="form-control">User</option>

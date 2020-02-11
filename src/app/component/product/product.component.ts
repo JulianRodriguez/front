@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../model/product.model';
 import {ProductService} from '../../service/product.service';
 import {Restaurant} from '../../model/restaurant.model';
@@ -10,6 +10,7 @@ import { QRComponent } from '../qr/qr.component';
 import { DeletePComponent } from '../delete-p/delete-p.component';
 import {ModifyproductComponent} from '../modifyproduct/modifyproduct.component';
 import {DescripcionProductoComponent} from '../descripcion-producto/descripcion-producto.component';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -23,6 +24,8 @@ export class ProductComponent implements OnInit {
   totalProducts: number;
   pagination: number;
 
+
+  private idRestaurant;
   @ViewChild('qrModal')
   qrModal: QRComponent;
   @ViewChild(DeletePComponent)
@@ -35,9 +38,12 @@ export class ProductComponent implements OnInit {
   constructor(private productService: ProductService,
               private restaurantService: RestaurantService,
               private userService: UserService,
-              private searchService: SearchService) { }
+              private searchService: SearchService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.idRestaurant = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.idRestaurant);
     this.loadProduct();
   //
   //   this.searchService.changed.subscribe(() => {

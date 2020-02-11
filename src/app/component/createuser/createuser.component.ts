@@ -26,9 +26,11 @@ export class CreateuserComponent implements OnInit {
       ]),
       nombre: new FormControl('', [
         Validators.required
+        // Validators.maxLength(40)
         ]),
       telefono: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^[0-9]*$')
       ]),
       username: new FormControl('', [
         Validators.required,

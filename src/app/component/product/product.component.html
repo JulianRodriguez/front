@@ -71,7 +71,7 @@
           <td class="ellipsis">{{product.name}}</td>
           <td (click)="changeProductSelected(product,'descriptionProdModal','descriptionProducto')" class="ellipsis">{{product.description}}</td>
 <!--          <td class="color-restaurant"> {{product.nameRestaurant}}</td>-->
-          <!--<td>{{(getUser(restaurant.idUser) | async)?.name}}</td>-->
+<!--          <td>{{(getUser(restaurant.idUser) | async)?.name}}</td>-->
           <td>
             <a href="{{ '#qrModal' + product.idProduct }}" data-toggle="modal"><i class="fa fa-qrcode" style="color:mediumblue" aria-hidden="true"></i></a>
             <span (click)="changeProductSelected(product, 'editProductModal','setProduct')" class="edit" data-toggle="modal"><i class="material-icons"  style="color:green" data-toggle="tooltip" title="Edit">&#xE254;</i></span>

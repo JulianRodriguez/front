@@ -28,19 +28,21 @@ export class ModifyuserComponent implements OnInit {
               private fb: FormBuilder) { }
   ngOnInit() {
     this.myForm = this.fb.group({
-      nombre: new FormControl('', [
-        Validators.required,
-      ]),
-      telefono: new FormControl('', [
-        Validators.required
-      ]),
-      username: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
       email: new FormControl('', [
         Validators.required,
         Validators.email
+      ]),
+      nombre: new FormControl('', [
+        Validators.required
+        // Validators.maxLength(40)
+      ]),
+      telefono: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]*$')
+      ]),
+      username: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6)
       ]),
       role: new FormControl('', [
         Validators.required

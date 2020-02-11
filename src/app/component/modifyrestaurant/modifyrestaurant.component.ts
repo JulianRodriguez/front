@@ -17,6 +17,10 @@ export class ModifyrestaurantComponent implements OnInit {
   RestaurantToEdit: Restaurant;
   @Output()
   ModalClose = new EventEmitter();
+  @Input()
+  counter: number = 0;
+  @Input()
+  counterName: number = 0;
 
   public visible = false;
 
@@ -49,6 +53,12 @@ export class ModifyrestaurantComponent implements OnInit {
 
   closeModal() {
     this.visible = false;
+  }
+  onInput(value: string) {
+    this.counter = value.length;
+  }
+  onInputName(value: string) {
+    this.counterName = value.length;
   }
 
   setRestaurant(restaurant: Restaurant) {

@@ -237,3 +237,6 @@ table.table .avatar {
   z-index: 9999;
   background: rgba(0,0,0,.2);
 }
+.letras {
+  float: right;
+}
