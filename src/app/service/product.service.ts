@@ -91,6 +91,9 @@ export class ProductService {
   getTotal() {
     return this.http.get<number>('http://localhost:8080/product/total', this.options);
   }
+  getTotalProductoRestaurant(id: number) {
+    return this.http.get<number>('http://localhost:8080/restaurant/' + id + '/product/total', this.options);
+  }
 
   editProd(product: Product, name: string, description: string) {
 

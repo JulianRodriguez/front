@@ -44,38 +44,16 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.idRestaurant = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.idRestaurant);
-    this.loadProduct();
-  //
-  //   this.searchService.changed.subscribe(() => {
-  //     console.log('Pero aquí no');
-  //     console.log(this.searchService.productos);
-  //     this.products = this.searchService.productos;
-  //   });
-  //
-  //   this.productService.getTotal().subscribe( total => {
-  //     this.totalProducts = total as unknown as number;
-  //     this.pagination = Math.ceil(this.totalProducts / 10);
-  //   })
-  //
-  //   const user = this.userService.getUserLoggedIn();
-  //   if (user.rolename === 'ADMIN') {
-  //     this.productService.getAll(0).subscribe(products => {
-  //       this.products = products as unknown as Array<Product>;
-  //     });
-  //   } else {
-  //     this.restaurantService.getByIdUser(user.idUser).subscribe((restaurants) => {
-  //       this.products = new Array<Product>();
-  //       for (const restaurant of restaurants as unknown as Array<Restaurant>) {
-  //         this.productService.getByIdRestaurant(restaurant.idRestaurant).subscribe(products => {
-  //           this.products = this.products.concat(products as unknown as Array<Product>);
-  //         });
-  //       }
-  //     });
-  //   }
+    if (this.idRestaurant === '*') {
+      console.log('Estoy en el if');
+      this.loadProduct();
+    } else {
+      console.log('Estoy en el else');
+      this.loadProductRestaurant();
+    }
   }
 
   loadProduct() {
-
     this.searchService.changed.subscribe(() => {
       console.log('Pero aquí no');
       console.log(this.searchService.productos);
@@ -103,6 +81,56 @@ export class ProductComponent implements OnInit {
       });
     }
   }
+
+  loadProductRestaurant() {
+    this.searchService.changed.subscribe(() => {
+      console.log('Pero aquí no');
+      console.log(this.searchService.productos);
+      this.products = this.searchService.productos;
+    });
+
+    this.productService.getTotalProductoRestaurant(this.idRestaurant).subscribe( total => {
+      this.totalProducts = total as unknown as number;
+      console.log('Total de productos');
+      console.log(this.totalProducts);
+      this.pagination = Math.ceil(this.totalProducts / 10);
+    })
+
+    this.productService.getByIdRestaurant(this.idRestaurant).subscribe(products => {
+      console.log('Los productos del restaurante');
+      console.log(products);
+      this.products = products as unknown as Array<Product>;
+    });
+  }
+
+  // loadProduct() {
+  //   this.searchService.changed.subscribe(() => {
+  //     console.log('Pero aquí no');
+  //     console.log(this.searchService.productos);
+  //     this.products = this.searchService.productos;
+  //   });
+  //
+  //   this.productService.getTotal().subscribe( total => {
+  //     this.totalProducts = total as unknown as number;
+  //     this.pagination = Math.ceil(this.totalProducts / 10);
+  //   })
+  //
+  //   const user = this.userService.getUserLoggedIn();
+  //   if (user.rolename === 'ADMIN') {
+  //     this.productService.getAll(0).subscribe(products => {
+  //       this.products = products as unknown as Array<Product>;
+  //     });
+  //   } else {
+  //     this.restaurantService.getByIdUser(user.idUser).subscribe((restaurants) => {
+  //       this.products = new Array<Product>();
+  //       for (const restaurant of restaurants as unknown as Array<Restaurant>) {
+  //         this.productService.getByIdRestaurant(restaurant.idRestaurant).subscribe(products => {
+  //           this.products = this.products.concat(products as unknown as Array<Product>);
+  //         });
+  //       }
+  //     });
+  //   }
+  // }
 
 
   changeProductSelected(ProductSelected: Product, modal: string, funcion: string) {
