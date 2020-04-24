@@ -31,8 +31,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  logIn(username: string, password: string, event: Event) {
-    event.preventDefault(); // Avoid default action for the submit button of the login form
+  logIn(username: string, password: string) {
     // Calls service to login user to the api rest
     this.loginService.login(username, password).subscribe(
 

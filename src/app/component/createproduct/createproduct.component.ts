@@ -38,7 +38,6 @@ export class CreateproductComponent implements OnInit {
   }
 
   onSubmit() {
-    event.preventDefault();
     this.productService.addproduct(this.myForm.get('nombre').value, this.myForm.get('descripcion').value, this.photo, this.ProductTocreate).subscribe(restaurant => {
       console.log(this.ProductTocreate);
       this.closeModal();
@@ -46,7 +45,6 @@ export class CreateproductComponent implements OnInit {
   }
 
   addproduct(name: string, description: string, photo: string) {
-    event.preventDefault();
     this.productService.addproduct(name, description, photo, this.ProductTocreate).subscribe(restaurant => {
       console.log(this.ProductTocreate);
       this.closeModal();

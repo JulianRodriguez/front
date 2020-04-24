@@ -31,7 +31,6 @@ export class PasswordComponent implements OnInit {
     });
   }
   onSubmit() {
-    event.preventDefault();
     this.userService.generatePass(this.myForm.get('email').value).subscribe(valido => {
       this.valido = true;
       this.ModalClose.emit();

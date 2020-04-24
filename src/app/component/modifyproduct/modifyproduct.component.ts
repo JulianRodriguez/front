@@ -41,7 +41,6 @@ export class ModifyproductComponent implements OnInit {
   }
 
   onSubmit() {
-    event.preventDefault();
      this.productService.editProd(this.ProductToEdit,
        this.myForm.get('nombre').value, this.myForm.get('descripcion').value).subscribe(product => {
       this.ModalClose.emit();

@@ -75,7 +75,6 @@ export class ModifyuserComponent implements OnInit {
     });
   }
   onSubmit() {
-    event.preventDefault();
     this.userService.modifyuser(this.userToEdit, this.myForm.get('username').value, this.myForm.get('role').value, this.myForm.get('nombre').value, this.myForm.get('telefono').value, this.myForm.get('email').value).subscribe(user => {
       this.ModalClose.emit();
       this.closeModal();

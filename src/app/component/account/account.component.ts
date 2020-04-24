@@ -73,22 +73,7 @@ export class AccountComponent implements OnInit {
   onSubmit() {
     event.preventDefault();
     if (this.myForm.get('contrasena1').validator && this.passExists) {
-      console.log('Dentro de onsubmit');
-      console.log(this.connect.idUser);
       this.successModal.openModal();
-
-      //   this.userService.changePass(this.connect.idUser, this.myForm.get('contrasena2').value).subscribe(cambio => {
-      //     // this.passModificada = cambio;
-      //     this.passModificada = true;
-      //     console.log('Estamos aki dentro');
-      //     this.successModal.openModal();
-      //   });
-      //   if (this.passModificada) {
-      //     console.log('Estamos aki');
-      //     this.successModal.openModal();
-      //     console.log('ya no es');
-      //   }
-      // }
     }
   }
 }

@@ -67,7 +67,6 @@ export class CreateuserComponent implements OnInit {
 
 
   onSubmit() {
-    event.preventDefault();
     console.log('ROLE');
     console.log(this.myForm.get('role').value);
     this.userService.adduser(this.myForm.get('username').value, this.myForm.get('password').value, this.myForm.get('role').value, this.myForm.get('nombre').value, this.myForm.get('telefono').value, this.myForm.get('email').value).subscribe(user => {
@@ -85,7 +84,6 @@ export class CreateuserComponent implements OnInit {
 
   adduser(username: string, password: string, role: number, name: string, phone: string, email: string ) {
     console.log(role);
-    event.preventDefault();
     this.userService.adduser(username, password, role, name, phone, email).subscribe(user => {
       this.closeModal();
     });

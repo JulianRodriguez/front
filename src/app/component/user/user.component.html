@@ -68,8 +68,6 @@
         </thead>
         <tbody>
         <tr *ngFor="let user of users; index as i">
-          <!--<th scope="row">{{i+1}}</th>-->
-<!--          <th scope="row">{{i+1}}</th>-->
           <th>{{user.idUser}}</th>
 
           <td>{{user.name}}</td>
@@ -83,7 +81,6 @@
             <span (click)="changeUserSelected(user, 'createRestaurantModal', 'createRestaurant')" class="create"><i class="material-icons" style="color:mediumblue" data-toggle="tooltip" title="Crear Restaurante">restaurant</i></span>
             <span  (click)="changeUserSelected(user, 'editEmployeeModal', 'setUser')" class="edit"><i class="material-icons" style="color:green" data-toggle="tooltip" title="Editar Usuario">&#xE254;</i></span>
             <span  (click)="changeUserSelected(user, 'deleteEmployeeModal', 'deleteUser')" class="delete"><i class="material-icons" style="color:red" data-toggle="tooltip" title="Eliminar Usuario">&#xE872;</i></span>
-            <!--<app-edit [userToEdit]="user"></app-edit>-->
           </td>
         </tr>
         </tbody>

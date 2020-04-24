@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaginatePComponent } from './paginate-p.component';
+import { TestSharedModule } from 'src/app/tests-module/test-shared-module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 describe('PaginatePComponent', () => {
   let component: PaginatePComponent;
@@ -8,7 +10,9 @@ describe('PaginatePComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PaginatePComponent ]
+      declarations: [ PaginatePComponent ],
+      imports: [...TestSharedModule.imports, NgxPaginationModule],
+      providers: [...TestSharedModule.providers]
     })
     .compileComponents();
   }));
@@ -21,5 +25,11 @@ describe('PaginatePComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit products', () => {
+    const spy = spyOn(component.productPage, 'emit');
+    component.emitProducts(1);
+    expect(spy).toHaveBeenCalled();
   });
 });

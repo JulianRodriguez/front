@@ -45,7 +45,6 @@ export class CreaterestaurantComponent implements OnInit {
     this.counterName = value.length;
   }
   onSubmit() {
-    event.preventDefault();
     this.restaurantService.addrestaurant(this.myForm.get('nombre').value, this.myForm.get('descripcion').value, this.RestaurantTocreate).subscribe(restaurant => {
       this.closeModal();
     });
@@ -61,12 +60,5 @@ export class CreaterestaurantComponent implements OnInit {
   createRestaurant(user: User) {
     this.RestaurantTocreate = user;
   }
-
-/*  addrestaurant(name: string, description: string) {
-    event.preventDefault();
-    this.restaurantService.addrestaurant(name, description, this.RestaurantTocreate).subscribe(restaurant => {
-      this.closeModal();
-    });
-  }*/
 
 }
