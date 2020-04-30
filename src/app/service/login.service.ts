@@ -10,10 +10,12 @@ import {isNullOrUndefined} from 'util';
 @Injectable()
 export class LoginService {
 
+  private urlBase = 'https://stark-earth-76126.herokuapp.com/';
+
   constructor(private http: HttpClient) {}
 
   isLogged(): Observable<Connected> {
-    return this.http.get<Connected>('http://localhost:8080/connection');
+    return this.http.get<Connected>(this.urlBase + 'connection');
   }
 
   getCurrentUser(): Connected {
@@ -37,7 +39,7 @@ export class LoginService {
     const options = { headers: headers,
       withCredentials: true};
 
-    return this.http.post<Connected>('http://localhost:8080/login', {
+    return this.http.post<Connected>(this.urlBase + 'login', {
       email: username,
       password: password,
     }, options);

@@ -9,8 +9,8 @@ import {map} from 'rxjs/operators';
 @Injectable()
 export class RestaurantService {
 
-  private urlBase = 'http://localhost:8080/';
-  private url = 'http://localhost:8080/restaurant';
+  private urlBase = 'https://stark-earth-76126.herokuapp.com/';
+  private url = 'https://stark-earth-76126.herokuapp.com/restaurant';
   private isUserLoggedIn;
   public usserLogged: User;
   private options;
@@ -97,7 +97,7 @@ export class RestaurantService {
       withCredentials: true
     };
 
-    return this.http.delete<Restaurant>('http://localhost:8080/restaurant/' + restaurant.idRestaurant, this.options);
+    return this.http.delete<Restaurant>(this.urlBase + 'restaurant/' + restaurant.idRestaurant, this.options);
   }
 
   addrestaurant(name: string, description: string, user: User) {
@@ -111,14 +111,14 @@ export class RestaurantService {
       withCredentials: true
     };
 
-    return this.http.post<Restaurant>('http://localhost:8080/user/' + user.idUser + '/restaurant', {
+    return this.http.post<Restaurant>(this.urlBase + 'user/' + user.idUser + '/restaurant', {
       nameRestaurant: name,
       descriptionRestaurant: description,
     }, this.options);
   }
 
   getTotalRestaurant() {
-    return this.http.get<number>('http://localhost:8080/restaurant/total', this.options);
+    return this.http.get<number>(this.urlBase + 'restaurant/total', this.options);
   }
 
   editUser(restaurant: Restaurant, nameRestaurant: string, descriptionRestaurant: string) {
@@ -136,7 +136,7 @@ export class RestaurantService {
         descriptionRestaurant = null;
       }
 
-    return this.http.put<User>('http://localhost:8080/restaurant/' + restaurant.idRestaurant, {
+    return this.http.put<User>(this.urlBase + 'restaurant/' + restaurant.idRestaurant, {
           nameRestaurant: nameRestaurant,
           descriptionRestaurant: descriptionRestaurant,
         }, this.options);

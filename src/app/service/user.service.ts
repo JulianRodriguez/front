@@ -9,7 +9,8 @@ import {SearchService} from './search.service';
 @Injectable()
 export class UserService {
 
-  private url = 'http://localhost:8080/user';
+  private urlBase = 'https://stark-earth-76126.herokuapp.com/';
+  private url = 'https://stark-earth-76126.herokuapp.com/user';
   private isUserLoggedIn;
   public usserLogged: Connected;
   private options;
@@ -83,7 +84,7 @@ export class UserService {
     this.options = { headers: headers,
       withCredentials: true};
 
-    return this.http.post<User>('http://localhost:8080/user', {
+    return this.http.post<User>(this.url, {
       username: username,
       password: password,
       idRole: role,
@@ -121,7 +122,7 @@ export class UserService {
     }
     console.log('El rol');
     console.log(role);
-    return this.http.put<User>('http://localhost:8080/user/' + user.idUser, {
+    return this.http.put<User>(this.url + '/' + user.idUser, {
       username: username,
       idRole: role,
       name: name,
@@ -140,7 +141,7 @@ export class UserService {
     });
     this.options = { headers: headers,
       withCredentials: true};
-    return this.http.put<Boolean>('http://localhost:8080/email/cambio',  {
+    return this.http.put<Boolean>(this.urlBase + '/email/cambio',  {
       email: email,
     }, this.options);
   }
@@ -152,7 +153,7 @@ export class UserService {
     });
     this.options = { headers: headers,
       withCredentials: true};
-    return this.http.get<boolean>('http://localhost:8080/check_user?value=' + value, this.options);
+    return this.http.get<boolean>(this.urlBase + 'check_user?value=' + value, this.options);
 
   }
   checkPass(email: string, password: string) {
@@ -164,7 +165,7 @@ export class UserService {
     });
     this.options = { headers: headers,
       withCredentials: true};
-    return this.http.get<boolean>('http://localhost:8080/check_pass?email=' + email + '&pass=' + password, this.options);
+    return this.http.get<boolean>(this.urlBase + 'check_pass?email=' + email + '&pass=' + password, this.options);
   }
 
 
@@ -177,7 +178,7 @@ export class UserService {
       withCredentials: true};
     console.log('Estamos en checkEmail');
     console.log(value);
-    return this.http.get<boolean>('http://localhost:8080/check_email?value=' + value, this.options);
+    return this.http.get<boolean>(this.urlBase + 'check_email?value=' + value, this.options);
 
   }
   changePass(idUser: number, password: string) {
@@ -189,7 +190,7 @@ export class UserService {
       withCredentials: true};
     console.log('Dentro de changepass');
     console.log(idUser);
-    return this.http.put<User>('http://localhost:8080/user/setPass',  {
+    return this.http.put<User>(this.urlBase + 'user/setPass',  {
       idUser: idUser,
       password: password,
     }, this.options);
@@ -205,7 +206,7 @@ export class UserService {
       withCredentials: true};
 
     // return this.http.get<User>('http://localhost:8080/user/' + id, this.options);
-    return this.http.get<User>('http://localhost:8080/user/' + id, this.options);
+    return this.http.get<User>(this.url + '/' + id, this.options);
   }
 
   deleteuser(user: User) {
@@ -217,17 +218,17 @@ export class UserService {
     this.options = { headers: headers, body: user,
       withCredentials: true};
 
-    return this.http.delete<User>('http://localhost:8080/user/' + user.idUser, this.options);
+    return this.http.delete<User>(this.url + '/' + user.idUser, this.options);
   }
 
   getTotal() {
-    return this.http.get<number>('http://localhost:8080/user/total', this.options);
+    return this.http.get<number>(this.urlBase + 'user/total', this.options);
   }
 
   getSearchTotal() {
     console.log('TÉRMINO');
     console.log(this.term);
-    return this.http.get<number>('http://localhost:8080/user/searchTotal?searchName=' + this.term, this.options);
+    return this.http.get<number>(this.urlBase + 'user/searchTotal?searchName=' + this.term, this.options);
   }
 
   // pages2() {

@@ -7,8 +7,8 @@ import {User} from '../model/user.model';
 @Injectable()
 export class ProductService {
 
-  private urlBase = 'http://localhost:8080/';
-  private url = 'http://localhost:8080/product';
+  private urlBase = 'https://stark-earth-76126.herokuapp.com/';
+  private url = 'https://stark-earth-76126.herokuapp.com/product';
   private options;
   private isUserLoggedIn;
   private queryForSearch = '?searchName=';
@@ -69,7 +69,7 @@ export class ProductService {
     console.log('Esto es el restaurante');
     console.log(restaurant);
 
-    return this.http.post<Product>('http://localhost:8080/restaurant/' + restaurant.idRestaurant + '/product', {
+    return this.http.post<Product>(this.urlBase + '/restaurant/' + restaurant.idRestaurant + '/product', {
       name: name,
       description: description,
       photo: photo,
@@ -85,14 +85,14 @@ export class ProductService {
     this.options = { headers: headers, body: product,
       withCredentials: true};
 
-    return this.http.delete<Product>('http://localhost:8080/product/' + product.idProduct, this.options);
+    return this.http.delete<Product>(this.urlBase + 'product/' + product.idProduct, this.options);
   }
 
   getTotal() {
-    return this.http.get<number>('http://localhost:8080/product/total', this.options);
+    return this.http.get<number>(this.urlBase + 'product/total', this.options);
   }
   getTotalProductoRestaurant(id: number) {
-    return this.http.get<number>('http://localhost:8080/restaurant/' + id + '/product/total', this.options);
+    return this.http.get<number>(this.urlBase + 'restaurant/' + id + '/product/total', this.options);
   }
 
   editProd(product: Product, name: string, description: string) {
@@ -113,7 +113,7 @@ export class ProductService {
     this.photo = null;
     console.log(name);
     console.log(description);
-    return this.http.put<Product>('http://localhost:8080/product/' + product.idProduct, {
+    return this.http.put<Product>(this.urlBase + 'product/' + product.idProduct, {
       name: name,
       description: description,
       photo: this.photo,
